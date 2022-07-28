@@ -1,0 +1,101 @@
+.card-counter{
+    box-shadow: 2px 2px 10px #DADADA;
+    margin: 5px;
+    padding: 20px 10px;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 5px;
+    transition: .3s linear all;
+  }
+.gridtitle{
+    color:#fff;
+    font-weight: bold;
+    font-style: italic;
+    opacity: 0.7;
+}
+.icon{
+    opacity:0.5;
+    color: #e9f5db;
+    font-size: 100px !important;
+    float:right;
+    text-align: right;
+    margin-top:70px;
+    position: absolute;
+  margin-left:150px
+}
+.inf{
+    color: #e9f5db;
+    font-size:40px !important;
+    padding: 10px;
+    font-weight: bold;
+    opacity:0.9
+}
+  .card-counter:hover{
+    box-shadow: 4px 4px 20px #DADADA;
+    transition: .3s linear all;
+  }
+
+  .card-counter.primary{
+    background-color: #007bff;
+    color: #FFF;
+  }
+
+  .card-counter.danger{
+    background-color: #ef5350;
+    color: #FFF;
+  }  
+
+  .card-counter.success{
+    background-color: #66bb6a;
+    color: #FFF;
+  }  
+
+  .card-counter.info{
+    background-color: #26c6da;
+    color: #FFF;
+  }  
+
+  .card-counter i{
+    font-size: 2em;
+    opacity: 0.2;
+  }
+
+  .card-counter .count-numbers{
+   
+    right: 35px;
+    top: 20px;
+    font-size: 32px;
+    display: block;
+  }
+
+  .card-counter .count-name{
+   
+    right: 35px;
+    top: 65px;
+    font-style: italic;
+    text-transform: capitalize;
+    opacity: 0.5;
+    display: block;
+    font-size: 25px;
+    color:#fff
+  }
+  .container{
+    padding:50px;
+    padding-left: 270px;
+  }
+  .linkplus{
+    float:right;
+    text-align: right;
+    color:#1A1F14;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .linkplus:hover{
+    float:right;
+    text-align: right;
+    color:#1A1F14;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+  }
