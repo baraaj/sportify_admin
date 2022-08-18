@@ -1,21 +1,118 @@
-import React from 'react'
 import SideNav from './Sidenav'
-import './Sidenav.css';
+import './Sidenav.css'
+import {
+  
+  Link
+} from "react-router-dom";
+import Box from '@mui/material/Box';
+import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
+import axios from 'axios';
+import { getRowIdFromRowModel } from '@mui/x-data-grid/hooks/features/rows/gridRowsUtils';
+import {useState,useEffect} from 'react';
 export default function ClubsPage() {
-  const [selected, setSelected] = React.useState("");
-  
+  const [selected, setSelected] =useState("");
+  const [clbs, setClubs] =useState([]);
+  let clb=[];
   /** Function that will set different values to state variable
    * based on which dropdown is selected
    */
   const changeSelectOptionHandler = (event) => {
     setSelected(event.target.value);
   };
+
+const columns: GridColDef[] = [
+  { field: 'id', headerName: 'ID', width: 60 },
+  {
+    field: 'nom',
+    headerName: 'Nom',
+    width: 120,
+    editable: true,
+  },
+  {
+    field: 'activité',
+    headerName: 'Activité',
+    width: 120,
+    editable: true,
+  },
+  {
+    field: 'emplacement',
+    headerName: 'Emplacement',
+    width: 120,
+    editable: true,
+  },
+  {
+    field: 'région',
+    headerName: 'Région',
+    sortable: false,
+    width: 120,
+   
+  },
+  {
+    field: 'gouvernement',
+    headerName: 'Gouvernement',
+    sortable: false,
+    width: 120,
+   
+  },
+  {
+    field: 'logo',
+    headerName: 'Logo',
+    sortable: false,
+    width: 120,
+   
+  },
+  {
+    field: 'temps',
+    headerName: 'Temps',
+    sortable: false,
+    width: 430,
+     
+    type: 'string',
+  
+   
+  },
+  {
+    field: 'action',
+    headerName: 'Action',
+    
+    width: 120,
+    renderCell:(params)=>{
+      return(
+        <>
+       
+        <a class="edit"><EditIcon style={{Color:'#444'}}/></a>
+       
+        <a class="delete"><DeleteIcon style={{Color:"#555"}}/> </a>
+        </>
+      )
+    }
+  }
+];
+
+
+clb=clbs.map((c) => { 
+  return {
+  
+    id:c._id,
+    nom:c.nom_club,
+    gouvernement: c.gouvernement,
+    emplacement:c.emplacement,
+    temps:c.temps.map(cc=>{return cc.jour.toString()+""+cc.horaire.toString()+"\r"}),
+    //c.temps[0].jour.toString()+""+c.temps[0].horaire.toString() ,
+    région:c.region,
+    logo:c.logo,
+    activité:c.activite
+    
+  };});
+   
+  const rows = clb;
   
   /** Different arrays for different dropdowns */
   const ariana = [
@@ -476,6 +573,23 @@ const kebili =  [
   if (type) {
     options = type.map((el) => <option key={el}>{el}</option>);
   }
+  useEffect(()=>{
+    const getClubs=async ()=>{
+     try {
+       const res=await axios.get('/clubs/'
+       
+       );
+      setClubs(res.data.clubs);
+      
+       
+     } catch (err) {
+       console.log(err);
+     }
+    };
+    getClubs();
+   
+ },);
+ 
   return (
     
     <div id="wrapper">
@@ -574,52 +688,26 @@ const kebili =  [
           </div>
         </div>
       </form>
-    <div class="table-responsive">
-      
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-10"></div>
+      <div class="row">
+                   
                     <div class="col-sm-2">
-<a href="/addclubs"style={{ marginLeft:'100px',fontSize:'50px',color:'#85D236'}}><AddIcon style={{ fontSize:'50px'}}/></a>
-                    </div>
+<a class="add" href="/addclubs"><AddIcon style={{ fontSize:'50px'}}/></a>
+                    
                 </div>
-            </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nom</th>
-                        <th>Catégorie</th>
-                        <th>Gouvernement</th>
-                        <th>Adresse</th>
-                        <th>Nom de l'entraîneur</th>
-                        <th>Logo</th>
-                        <th>Heure</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>John Doe</td>
-                        <td>Administration</td>
-                        <td>(171) 555-2222</td>
-                        <td>(171) 555-2222</td>
-                        <td>(171) 555-2222</td>
-                        <td>(171) 555-2222</td>
-                        <td>(171) 555-2222</td>
-                        <td>(171) 555-2222</td>
-                        <td>
-                           
-                            <a href="/modifclubs"class="edit" title="Edit" data-toggle="tooltip"><EditIcon/></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><DeleteIcon/></a>
-                        </td>
-                    </tr>
-                      
-                </tbody>
-            </table>
-        </div>
-    </div>
+                </div>
+            
+      <Box sx={{ width: '90%',height:'600px',paddingTop:'5rem',paddingRight:'5rem'}}>
+      
+     <DataGrid
+       rows={rows}
+       columns={columns}
+       pageSize={5}
+       rowsPerPageOptions={[5]}
+       checkboxSelection
+       disableSelectionOnClick
+       experimentalFeatures={{ newEditingApi: true }}
+     />
+     </Box>
 </div>     
 
 
@@ -636,3 +724,4 @@ const kebili =  [
     </div >
   )
 }
+ 
