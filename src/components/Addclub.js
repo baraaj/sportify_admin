@@ -14,17 +14,23 @@ import AddIcon from '@mui/icons-material/Add';
       const [nom_entraineur, setNomE] =useState(null);
       const [temps, setTemps] =useState([]);
       const [logo,setLogo]=useState(null);
+      const actList=[];
       const handleChange=(e)=>{
         const value=e.target.value;
         setClub({...club,[e.target.name]:value});
        
 
       }
+      //console.log(activite.split(" "))
       const activiteHandler=(e)=>{
+         handleChange(e);
+         const ch=e.target.value;
         
+         setActivite(ch.split(" "));
+       
       }
 
-     
+
       /** Function that will set different values to state variable
        * based on which dropdown is selected
        */
@@ -48,11 +54,7 @@ import AddIcon from '@mui/icons-material/Add';
       
           console.log(logo)
          
-        const res=await axios.post('clubs/',club,logo,{
-          headers: {
-            'Content-Type': logo.type
-          }
-        })
+        const res=await axios.post('clubs/',club)
         .then( res =>{
           console.log(res);
         })
@@ -549,15 +551,11 @@ const kebili =  [
       marginBottom:'20px'
     }
   }>
-<input type="text" style={{height:'50px'}} onChange={activiteHandler}  class="input-control form-control" id="activites"/>
+<input type="text" style={{height:'50px'}} onChange={activiteHandler}  class="input-control form-control" id="activites" name="activite"/>
 
 
 </div>
 
-<div className="col-sm-2">
-  <button class="addbutton">
-    <AddIcon style={{fontSize:'20px'}}/>Ajouter</button>
-    </div>
     
 </div>
 
