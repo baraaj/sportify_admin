@@ -30,8 +30,8 @@ function App() {
    
     <Route path="/clubs" element={<ClubsPage/>} exact />
     <Route path="/salles" element={<SallePage/>} exact />
-    <Route path="/addclubs" element={<Addclub/>} exact />
-    <Route path="/modifclubs" element={<Modifclub/>} exact />
+    <Route path="/addclub" element={<Addclub/>} exact />
+    <Route path="/modifclubs/:id" element={<Modifclub/>} exact />
     <Route path="/modifsalles" element={<Modifsalle/>} exact />
     <Route path="/addsalles" element={<AddSalle/>} exact />
     <Route path="/news" element={<Ajoutnews/>} exact />

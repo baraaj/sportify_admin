@@ -1,10 +1,17 @@
 import SideNav from "./Sidenav";
-
-   
-    import React from 'react'
+  import React from 'react'
+import { useState } from "react";
     
     export default function Addclub() {
-      const [selected, setSelected] = React.useState("");
+      const [selected, setSelected] =useState("");
+      const [club, setClub] =useState(null);
+      const [nom_club, setNom] =useState(null);
+      const [emplacement, setEmplacement] =useState(null);
+      const [region, setRegion] =useState(null);
+      const [gouvernement, setGouvernement] =useState(null);
+      const [activite, setActivite] =useState(null);
+      
+
   
       /** Function that will set different values to state variable
        * based on which dropdown is selected

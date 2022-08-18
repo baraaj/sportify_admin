@@ -19,6 +19,7 @@ import {useState,useEffect} from 'react';
 export default function ClubsPage() {
   const [selected, setSelected] =useState("");
   const [clbs, setClubs] =useState([]);
+  
   let clb=[];
   /** Function that will set different values to state variable
    * based on which dropdown is selected
@@ -86,10 +87,10 @@ const columns: GridColDef[] = [
     renderCell:(params)=>{
       return(
         <>
-       
-        <a class="edit"><EditIcon style={{Color:'#444'}}/></a>
-       
-        <a class="delete"><DeleteIcon style={{Color:"#555"}}/> </a>
+       <Link to={"/modifclubs/"+params.id} state={{club:rows}}>
+        <a className="edit" ><EditIcon style={{Color:'#444'}}/></a>
+        </Link>
+        <a className="delete" onClick={(e)=>{deleteClub(params.id,e)}}><DeleteIcon style={{Color:"#555"}}/> </a>
         </>
       )
     }
@@ -589,6 +590,23 @@ const kebili =  [
     getClubs();
    
  },);
+
+  const deleteClub=async(id)=>{ 
+    
+   try {
+     const res=await axios.delete(`/clubs/${id}`)
+     .then(res=>{
+
+       clbs = clbs.filter(item => item.id !== id);  
+      this.setClubs( clbs);  
+     })
+   } catch (err) {
+     console.log(err);
+   }
+  };
+ 
+ 
+
  
   return (
     
@@ -691,8 +709,9 @@ const kebili =  [
       <div class="row">
                    
                     <div class="col-sm-2">
-<a class="add" href="/addclubs"><AddIcon style={{ fontSize:'50px'}}/></a>
-                    
+                      <Link to="/addclub">
+<a class="add"><AddIcon style={{ fontSize:'50px'}}/></a>
+</Link>          
                 </div>
                 </div>
             

@@ -2,8 +2,15 @@ import SideNav from "./Sidenav";
 
    
     import React from 'react'
+import { useLocation } from "react-router-dom";
     
     export default function Modifclub() {
+      const location = useLocation();
+      const {club} = location.state;
+       //console.log(club[0].nom);
+       
+      const ch=club[0];
+      console.log(ch);
       return (
         <div id="wrapper">
 
@@ -27,17 +34,17 @@ import SideNav from "./Sidenav";
   
   <div class="form-group ">
     <label for="club">Nom du club</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom"/>
- 
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder={ch.nom}/>
+
   </div>
   <div class="form-group ">
     <label for="club">Adresse</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom"/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder={ch.emplacement}/>
  
   </div>
   <div class="form-group ">
     <label for="club">Nom de l'entraîneur</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom"/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="nom entraineur"/>
  
   </div>
   <div class="form-group ">
@@ -55,7 +62,7 @@ import SideNav from "./Sidenav";
   <div class="input-select">
                   <select data-trigger="" class="form-select"name="choices-single-defaul"
                  >
-                    <option placeholder="" value="">Gouvernement</option>
+                    <option placeholder={ch.gouvernement} value="">Gouvernement</option>
                     <option value="2">Ariana</option>
                 <option value="3">Béja</option>
                 <option value="4">Ben Arous</option>
