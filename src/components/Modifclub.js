@@ -1,16 +1,33 @@
 import SideNav from "./Sidenav";
-
-   
-    import React from 'react'
-import { useLocation } from "react-router-dom";
+import axios from "axios";
+   import React from 'react'
+import { useLocation,useEffect,useState } from "react";
     
     export default function Modifclub() {
       const location = useLocation();
       const {club} = location.state;
+      console.log(club);
+      const [clb,updateClub]=useState({});
        //console.log(club[0].nom);
        
       const ch=club[0];
       console.log(ch);
+   /*   useEffect(()=>{
+        const updateClub=async (id)=>{
+         try {
+           const res=await axios.put(`/clubs/${id}`
+           
+           );
+         // setClubs(res.data.clubs);
+          
+           
+         } catch (err) {
+           console.log(err);
+         }
+        };
+        updateClub();
+       
+     },);*/
       return (
         <div id="wrapper">
 

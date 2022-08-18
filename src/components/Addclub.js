@@ -1,24 +1,63 @@
 import SideNav from "./Sidenav";
   import React from 'react'
-import { useState } from "react";
-    
+import { useState,useEffect } from "react";
+ import axios from "axios";   
     export default function Addclub() {
       const [selected, setSelected] =useState("");
-      const [club, setClub] =useState(null);
+      const [club, setClub] =useState({});
       const [nom_club, setNom] =useState(null);
       const [emplacement, setEmplacement] =useState(null);
       const [region, setRegion] =useState(null);
       const [gouvernement, setGouvernement] =useState(null);
-      const [activite, setActivite] =useState(null);
-      
+      const [activite, setActivite] =useState([]);
+      const [nom_entraineur, setNomE] =useState(null);
+      const [temps, setTemps] =useState([]);
+      const [logo,setLogo]=useState(null);
+      const handleChange=(e)=>{
+        const value=e.target.value;
+        setClub({...club,[e.target.name]:value});
+       
 
-  
+      }
+
+     
       /** Function that will set different values to state variable
        * based on which dropdown is selected
        */
-      const changeSelectOptionHandler = (event) => {
-        setSelected(event.target.value);
+       const changeSelectOptionHandler = (e) => {
+        setSelected(e.target.value);
+        handleChange(e);
+        setGouvernement(e.target.value)
       };
+      const changeSelectOptionHandlerregion = (e) => {
+        handleChange(e);
+        setRegion(e.target.value)
+      };
+      const Logohandler=(e)=>{
+        handleChange(e);
+        setLogo(e.target.files[0]);
+      }
+      
+      
+    
+      const additem = async(props)=>{
+         
+        try {
+          
+          console.log(props)
+         /*const res=await axios.post('clubs/',
+          club
+          );*/
+         //setClub(res.data);
+         
+        } catch (error) {
+         console.log(error)
+        }
+       
+     }
+     additem();
+   
+
       
       /** Different arrays for different dropdowns */
       const ariana = [
@@ -374,31 +413,7 @@ const kebili =  [
       
       /** This will be used to create set of options that user will see */
       let options = null;
-      /**    <option value="2">Ariana</option>
-                <option value="3">Béja</option>
-                <option value="4">Ben Arous</option>
-                <option value="5">Bizerte</option>
-                <option value="6">Gabès</option>
-                <option value="7">Gafsa</option>
-                <option value="8">Jendouba</option>
-                <option value="9">Kairouan</option>
-                <option value="10">Kasserine</option>
-                <option value="11">Kébili</option>
-                <option value="12">Le Kef</option>
-                <option value="13">Mahdia</option>
-                <option value="14">La Manouba</option>
-                <option value="15">Médenine</option>
-                <option value="16">Monastir</option>
-                <option value="17">Nabeul</option>
-                <option value="18">Sfax</option>
-                <option value="19">Sidi Bouzid</option>
-                <option value="20">Siliana</option>
-                <option value="21">Sousse</option>
-                <option value="22">Tataouine</option>
-                <option value="23">Tozeur</option>
-                <option value="24">Tunis</option>
-                <option value="25">Zaghouan</option> */
-      /** Setting Type variable according to dropdown */
+    
       if (selected === "Ariana") {
         type = ariana;
       } else if (selected === "Béja") {
@@ -502,23 +517,23 @@ const kebili =  [
   
   <div class="form-group ">
     <label for="club">Nom du club</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom"/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_club" onChange={handleChange}/>
  
   </div>
   <div class="form-group ">
     <label for="club">Adresse</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom"/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="emplacement" onChange={handleChange}/>
  
   </div>
   <div class="form-group ">
     <label for="club">Nom de l'entraîneur</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom"/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_entraineur" onChange={handleChange}/>
  
   </div>
   <div class="form-group ">
   <label for="club">Gouvernement</label>
   <div class="input-select">
-                  <select data-trigger=""   onChange={changeSelectOptionHandler} class="form-select"name="choices-single-defaul">
+                  <select data-trigger="" onChange={changeSelectOptionHandler} class="form-select" name="gouvernement">>
                   <option></option>
                   <option>Ariana</option>
                 <option>Béja</option>
@@ -550,7 +565,7 @@ const kebili =  [
   <div class="form-group">
   <label for="club">Région</label>
   <div class="input-select">
-                  <select data-trigger="" class="form-select"name="choices-single-defaul"
+                  <select data-trigger="" class="form-select"name="region"onChange={changeSelectOptionHandlerregion}
                  >
                         {
               /** This is where we have used our options variable */
@@ -563,11 +578,11 @@ const kebili =  [
   <div class="form-group ">
 
     <label for="exampleFormControlFile1">Logo</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler}/>
   
   </div>
  
-  <button type="submit" class="btn d-flex justify-content-center">Sauvegarder</button>
+  <button type="submit" class="btn d-flex justify-content-center" >Sauvegarder</button>
 </form>
                                </div>
     
