@@ -87,7 +87,7 @@ const columns: GridColDef[] = [
     renderCell:(params)=>{
       return(
         <>
-       <Link to={"/modifclubs/"+params.id} state={{club:rows}}>
+       <Link to={"/modifclubs/"+params.id} state={{club:params.row}}>
         <a className="edit" ><EditIcon style={{Color:'#444'}}/></a>
         </Link>
         <a className="delete" onClick={(e)=>{deleteClub(params.id,e)}}><DeleteIcon style={{Color:"#555"}}/> </a>

@@ -1,10 +1,11 @@
 import SideNav from "./Sidenav";
   import React from 'react'
 import { useState,useEffect } from "react";
+import AddIcon from '@mui/icons-material/Add';
  import axios from "axios";   
     export default function Addclub() {
       const [selected, setSelected] =useState("");
-      const [club, setClub] =useState({});
+      const [club, setClub] =useState(null);
       const [nom_club, setNom] =useState(null);
       const [emplacement, setEmplacement] =useState(null);
       const [region, setRegion] =useState(null);
@@ -18,6 +19,9 @@ import { useState,useEffect } from "react";
         setClub({...club,[e.target.name]:value});
        
 
+      }
+      const activiteHandler=(e)=>{
+        
       }
 
      
@@ -36,26 +40,30 @@ import { useState,useEffect } from "react";
       const Logohandler=(e)=>{
         handleChange(e);
         setLogo(e.target.files[0]);
+        
       }
-      
-      
-    
-      const additem = async(props)=>{
-         
-        try {
-          
-          console.log(props)
-         /*const res=await axios.post('clubs/',
-          club
-          );*/
-         //setClub(res.data);
-         
-        } catch (error) {
-         console.log(error)
-        }
        
+      const additem = async( )=>{
+          //console.log(club)
+      
+          console.log(logo)
+         
+        const res=await axios.post('clubs/',club,logo,{
+          headers: {
+            'Content-Type': logo.type
+          }
+        })
+        .then( res =>{
+          console.log(res);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+       
+         
+        
      }
-     additem();
+      
    
 
       
@@ -530,6 +538,33 @@ const kebili =  [
     <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_entraineur" onChange={handleChange}/>
  
   </div>
+  <div class="form-group">
+
+<label for="activites">Activité(s)</label>
+
+<div>
+  <div className="input-group" style={
+    {
+      
+      marginBottom:'20px'
+    }
+  }>
+<input type="text" style={{height:'50px'}} onChange={activiteHandler}  class="input-control form-control" id="activites"/>
+
+
+</div>
+
+<div className="col-sm-2">
+  <button class="addbutton">
+    <AddIcon style={{fontSize:'20px'}}/>Ajouter</button>
+    </div>
+    
+</div>
+
+
+
+
+</div> 
   <div class="form-group ">
   <label for="club">Gouvernement</label>
   <div class="input-select">
@@ -582,7 +617,7 @@ const kebili =  [
   
   </div>
  
-  <button type="submit" class="btn d-flex justify-content-center" >Sauvegarder</button>
+  <button type="submit" class="btn d-flex justify-content-center" onClick={additem}>Sauvegarder</button>
 </form>
                                </div>
     
