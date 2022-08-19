@@ -14,7 +14,7 @@ import AddIcon from '@mui/icons-material/Add';
       const [nom_entraineur, setNomE] =useState(null);
       const [temps, setTemps] =useState([]);
       const [logo,setLogo]=useState(null);
-      const actList=[];
+      
       const handleChange=(e)=>{
         const value=e.target.value;
         setClub({...club,[e.target.name]:value});
@@ -29,8 +29,12 @@ import AddIcon from '@mui/icons-material/Add';
          setActivite(ch.split(" "));
        
       }
+      const emplacementHandler=(e)=>{
+        handleChange(e);
+        setEmplacement(e.target.value);
+      }
 
-
+console.log(emplacement)
       /** Function that will set different values to state variable
        * based on which dropdown is selected
        */
@@ -49,7 +53,7 @@ import AddIcon from '@mui/icons-material/Add';
         
       }
        
-      const additem = async( )=>{
+      /*const additem = async( )=>{
           //console.log(club)
       
           console.log(logo)
@@ -64,7 +68,28 @@ import AddIcon from '@mui/icons-material/Add';
        
          
         
+     }*/
+     const additem=async()=>{
+      var formdata = new FormData();
+formdata.append("nom_club",nom_club);
+formdata.append("logo", logo);
+formdata.append("emplacement",emplacement);
+formdata.append("activite", activite);
+formdata.append("nom_entraineur",nom_entraineur);
+formdata.append("gouvernement", gouvernement);
+formdata.append("region", region);
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:3000/api/clubs", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
      }
+
       
    
 
@@ -523,7 +548,7 @@ const kebili =  [
     
                                 </div>
                                <div class="">
-                               <form style={{marginLeft:'10%',alignItems:'left'}}>
+                               <form onSubmit={(e)=>{e.preventDefault();additem()}}style={{marginLeft:'10%',alignItems:'left'}}>
   
   <div class="form-group ">
     <label for="club">Nom du club</label>
@@ -532,7 +557,7 @@ const kebili =  [
   </div>
   <div class="form-group ">
     <label for="club">Adresse</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="emplacement" onChange={handleChange}/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="emplacement" onChange={emplacementHandler}/>
  
   </div>
   <div class="form-group ">
@@ -615,7 +640,7 @@ const kebili =  [
   
   </div>
  
-  <button type="submit" class="btn d-flex justify-content-center" onClick={additem}>Sauvegarder</button>
+  <button type="submit" class="btn d-flex justify-content-center" >Sauvegarder</button>
 </form>
                                </div>
     

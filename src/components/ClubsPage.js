@@ -67,6 +67,14 @@ const columns: GridColDef[] = [
     headerName: 'Logo',
     sortable: false,
     width: 120,
+    renderCell:(params)=>{
+      return(
+        <>
+     <img className='avatar'src={"http://localhost:3000/"+params.row.logo} onClick={console.log(params.row.logo)} />
+        </>
+      )
+    }
+
    
   },
   {
@@ -88,7 +96,7 @@ const columns: GridColDef[] = [
       return(
         <>
        <Link to={"/modifclubs/"+params.id} state={{club:params.row}}>
-        <a className="edit" ><EditIcon style={{Color:'#444'}}/></a>
+        <a className="edit"><EditIcon style={{Color:'#444'}}/></a>
         </Link>
         <a className="delete" onClick={(e)=>{deleteClub(params.id,e)}}><DeleteIcon style={{Color:"#555"}}/> </a>
         </>

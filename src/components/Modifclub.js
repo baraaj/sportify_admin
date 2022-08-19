@@ -9,6 +9,7 @@ import {useEffect,useState } from "react";
       const clb = location.state;
       const [selected, setSelected] =useState("");
       const [cb,setClub]=useState({});
+      console.log(clb);
       const handleChange=(e)=>{
         const value=e.target.value;
         setClub({...cb,[e.target.name]:value});
@@ -28,7 +29,7 @@ import {useEffect,useState } from "react";
        
     
    
-        const updateClub=async (id)=>{
+      /*  const updateClub=async (id)=>{
          try {
            const res=await axios.put(`/clubs/${id}`,cb
            
@@ -39,7 +40,7 @@ import {useEffect,useState } from "react";
          } catch (err) {
            console.log(err);
          }
-        };
+        };*/
        
        
      
@@ -566,7 +567,7 @@ const kebili =  [
   
   </div>
  
-  <button type="submit" class="btn d-flex justify-content-center" onClick={updateClub}>Sauvegarder</button>
+  <button type="submit" class="btn d-flex justify-content-center" >Sauvegarder</button>
 </form>
                                </div>
     
