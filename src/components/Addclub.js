@@ -14,7 +14,7 @@ import AddIcon from '@mui/icons-material/Add';
       const [nom_entraineur, setNomE] =useState(null);
       const [temps, setTemps] =useState([]);
       const [logo,setLogo]=useState(null);
-      
+      let l=[];
       const handleChange=(e)=>{
         const value=e.target.value;
         setClub({...club,[e.target.name]:value});
@@ -25,16 +25,18 @@ import AddIcon from '@mui/icons-material/Add';
       const activiteHandler=(e)=>{
          handleChange(e);
          const ch=e.target.value;
-        
-         setActivite(ch.split(" "));
-       
+        l=[ch.split(" ")];
+         
+      setActivite(l);
+         
+       console.log(activite)
       }
       const emplacementHandler=(e)=>{
         handleChange(e);
         setEmplacement(e.target.value);
       }
 
-console.log(emplacement)
+
       /** Function that will set different values to state variable
        * based on which dropdown is selected
        */
@@ -52,6 +54,10 @@ console.log(emplacement)
         setLogo(e.target.files[0]);
         
       }
+      const handleChangenc =(e)=>{
+        setNom(e.target.value)
+      }
+      console.log(nom_club)
        
       /*const additem = async( )=>{
           //console.log(club)
@@ -69,6 +75,7 @@ console.log(emplacement)
          
         
      }*/
+    // console.log(nom_club)
      const additem=async()=>{
       var formdata = new FormData();
 formdata.append("nom_club",nom_club);
@@ -552,7 +559,7 @@ const kebili =  [
   
   <div class="form-group ">
     <label for="club">Nom du club</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_club" onChange={handleChange}/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_club" onChange={handleChangenc}/>
  
   </div>
   <div class="form-group ">
