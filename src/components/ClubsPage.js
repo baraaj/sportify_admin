@@ -70,7 +70,7 @@ const columns: GridColDef[] = [
     renderCell:(params)=>{
       return(
         <>
-     <img className='avatar'src={"http://localhost:3000/"+params.row.logo} onClick={console.log(params.row.logo)} />
+     <img className='avatar'src={"http://localhost:3000/"+params.row.logo} />
         </>
       )
     }
@@ -718,7 +718,7 @@ const kebili =  [
                    
                     <div class="col-sm-2">
                       <Link to="/addclub">
-<a class="add"><AddIcon style={{ fontSize:'50px'}}/></a>
+<AddIcon className='add' style={{ fontSize:'50px'}}/>
 </Link>          
                 </div>
                 </div>

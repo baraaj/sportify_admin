@@ -8,39 +8,92 @@ import {useEffect,useState } from "react";
  const location = useLocation();
       const clb = location.state;
       const [selected, setSelected] =useState("");
+     const ch=clb.club;
       const [cb,setClub]=useState({});
-      console.log(clb);
+      const [nom_club, setNom] =useState(null);
+      const [emplacement, setEmplacement] =useState(null);
+      const [region, setRegion] =useState(null);
+      const [gouvernement, setGouvernement] =useState(null);
+      const [activite, setActivite] =useState([]);
+      const [nom_entraineur, setNomE] =useState(null);
+      const [temps, setTemps] =useState([]);
+      const [logo,setLogo]=useState(null);
+       
       const handleChange=(e)=>{
+      
         const value=e.target.value;
         setClub({...cb,[e.target.name]:value});
-       
+      console.log(cb)
 
       }
+      
       const changeSelectOptionHandler = (e) => {
         setSelected(e.target.value);
-        handleChange(e);
-        //setGouvernement(e.target.value)
+       
+        setGouvernement(e.target.value)
+        setGouvernement(e.target.placeholder)
+      
+      
       };
       const changeSelectOptionHandlerregion = (e) => {
-        handleChange(e);
-        //setRegion(e.target.value)
-      };
+        setRegion(e.target.value)
        
+      
+      };
+      const EntraineurHandler = (e) => {
+        setSelected(e.target.value);
+     
+        setNomE(e.target.value)
+       
+        
+       
+      };
+      const activiteHandler=(e)=>{
+       
+        const c=e.target.value;
+       
+        setActivite(c.split(" "));
+        
+      
+     };
        
     
-   
-      /*  const updateClub=async (id)=>{
-         try {
-           const res=await axios.put(`/clubs/${id}`,cb
-           
-           );
-         // setClubs(res.data.clubs);
-          
-           
-         } catch (err) {
-           console.log(err);
-         }
-        };*/
+     const Logohandler=(e)=>{
+    
+      setLogo(e.target.files[0]);
+       
+      
+    }
+    const handleChangea = (e) => {
+      setEmplacement(e.target.value)
+      
+     
+    };
+    const handleChangenc =(e)=>{
+      setNom(e.target.value)
+    }
+    
+      const updateClub=async(id)=>{
+        var formdata = new FormData();
+        formdata.append("nom_club",nom_club);
+        formdata.append("logo", logo);
+        formdata.append("emplacement",emplacement);
+        formdata.append("activite",activite);
+        formdata.append("nom_entraineur",nom_entraineur);
+        formdata.append("gouvernement", gouvernement);
+        formdata.append("region", region);
+        
+        var requestOptions = {
+          method: 'PUT',
+          body: formdata,
+          redirect: 'follow'
+        };
+        
+        fetch(`http://localhost:3000/api/clubs/${id}`, requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+        };
        
        
      
@@ -498,27 +551,46 @@ const kebili =  [
     
                                 </div>
                                <div class="">
-                               <form style={{marginLeft:'10%',alignItems:'left'}}>
+                               <form onSubmit={(e)=>{e.preventDefault();updateClub(ch.id)}}style={{marginLeft:'10%',alignItems:'left'}}>
   
   <div class="form-group ">
     <label for="club">Nom du club</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder={clb.nom} name="nom_club" onChange={handleChange}/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder={ch.nom} name="nom_club" onChange={handleChangenc}/>
 
   </div>
   <div class="form-group ">
     <label for="club">Adresse</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder={clb.emplacement} name="emplacement"onChange={handleChange}/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder={ch.emplacement} name="emplacement"onChange={handleChangea}/>
  
   </div>
   <div class="form-group ">
     <label for="club">Nom de l'entraîneur</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="nom entraineur"name="nom_entraineur"onChange={handleChange}/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="nom entraineur"name="nom_entraineur"onChange={EntraineurHandler}/>
  
   </div>
+  <div class="form-group">
+
+  <label for="activites">Activité(s)</label>
+
+<div>
+  <div className="input-group" style={
+    {
+      
+      marginBottom:'20px'
+    }
+  }>
+<input type="text" style={{height:'50px'}} onChange={activiteHandler}  class="input-control form-control" id="activites" name="activite"/>
+
+
+</div>
+</div>
+    
+</div>
+
   <div class="form-group ">
   <label for="club">Gouvernement</label>
   <div class="input-select">
-                  <select data-trigger="" onChange={changeSelectOptionHandler} class="form-select" name="gouvernement"onChange={handleChange}>>
+                  <select data-trigger="" onChange={changeSelectOptionHandler} class="form-select" name="gouvernement">
                   <option></option>
                   <option>Ariana</option>
                 <option>Béja</option>
@@ -563,7 +635,7 @@ const kebili =  [
   <div class="form-group ">
 
     <label for="exampleFormControlFile1">Logo</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler}/>
   
   </div>
  
