@@ -10,11 +10,12 @@ import AddIcon from '@mui/icons-material/Add';
       const [emplacement, setEmplacement] =useState(null);
       const [region, setRegion] =useState(null);
       const [gouvernement, setGouvernement] =useState(null);
-      const [activite, setActivite] =useState([{}]);
+      const [activites, setActivite] =useState([{}]);
       const [nom_entraineur, setNomE] =useState(null);
       const [temps, setTemps] =useState([]);
       const [logo,setLogo]=useState(null);
       let l=[];
+      const [clicked,setClicked]=useState(false);
       const handleChange=(e)=>{
         const value=e.target.value;
         setClub({...club,[e.target.name]:value});
@@ -29,7 +30,7 @@ import AddIcon from '@mui/icons-material/Add';
          
       setActivite(l);
          
-       console.log(activite)
+        
       }
       const emplacementHandler=(e)=>{
         handleChange(e);
@@ -57,14 +58,28 @@ import AddIcon from '@mui/icons-material/Add';
       const handleChangenc =(e)=>{
         setNom(e.target.value)
       }
-      console.log(nom_club)
     
+     const handleAdd=(e)=>{
+    
+      var Contenu = document.getElementById('Cible').innerHTML;
+		Contenu = Contenu + '<br/><input onChange="handleAct()" type=\"text\"/>';
+		document.getElementById('Cible').innerHTML = Contenu;
+     // setActivite([...activites,{}])
+     }
+     function handleAct(e){
+      setActivite([...activites,{}])
+      setActivite(activites=>[...activites,e.target.value]);
+      console.log(activites)
+      
+     }
+    {console.log(activites)}
+  /*
      const additem=async()=>{
       var formdata = new FormData();
 formdata.append("nom_club",nom_club);
 formdata.append("logo", logo);
 formdata.append("emplacement",emplacement);
-formdata.append("activite", activite);
+//formdata.append("activite", activites);
 formdata.append("nom_entraineur",nom_entraineur);
 formdata.append("gouvernement", gouvernement);
 formdata.append("region", region);
@@ -80,22 +95,7 @@ fetch("http://localhost:3000/api/clubs", requestOptions)
   .catch(error => console.log('error', error));
      }
 
-     const handleActivitesAdd=()=>
-     {
-       setActivite([...activite,{}])
-     }
-     const handleActiviteschange=(e,index)=>
-     {
-       if(e.target.value!==undefined)
-       setActivite(activite=>[...activite,e.target.value])
-     }
-     const handleActivitesRemove=(index)=>
-     {
-      const List=[...activite];
-      List.splice(index,1);
-      setActivite(List)
-      console.log(activite)
-     }
+      */
    
 
       
@@ -553,7 +553,7 @@ const kebili =  [
     
                                 </div>
                                <div class="">
-                               <form onSubmit={(e)=>{e.preventDefault();additem()}}style={{marginLeft:'10%',alignItems:'left'}}>
+                               <form onSubmit={(e)=>{e.preventDefault()}}style={{marginLeft:'10%',alignItems:'left'}}>
   
   <div class="form-group ">
     <label for="club">Nom du club</label>
@@ -574,17 +574,19 @@ const kebili =  [
 
 <label for="activites">Activité(s)</label>
 
-<div>
+ 
   <div className="input-group" style={
     {
       
       marginBottom:'20px'
     }
   }>
-<input type="text" style={{height:'50px'}} onChange={activiteHandler}  class="input-control form-control" id="activites" name="activite"/>
+ <div>
 
+<button  onClick={handleAdd} >add</button>
 
 </div>
+<div id="Cible"style={{marginLeft:'30px'}}></div> 
 
     
 </div>
