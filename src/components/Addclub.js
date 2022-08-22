@@ -59,20 +59,22 @@ import AddIcon from '@mui/icons-material/Add';
         setNom(e.target.value)
       }
     
-     const handleAdd=(e)=>{
+     {/*const handleAdd=(e)=>{
     
       var Contenu = document.getElementById('Cible').innerHTML;
 		Contenu = Contenu + '<br/><input onChange="handleAct()" type=\"text\"/>';
 		document.getElementById('Cible').innerHTML = Contenu;
      // setActivite([...activites,{}])
-     }
+     }*/}
      function handleAct(e){
       setActivite([...activites,{}])
       setActivite(activites=>[...activites,e.target.value]);
       console.log(activites)
       
      }
-    {console.log(activites)}
+   const handleClicked=()=>{
+    setClicked(true)
+   }
   /*
      const additem=async()=>{
       var formdata = new FormData();
@@ -581,14 +583,18 @@ const kebili =  [
       marginBottom:'20px'
     }
   }>
- <div>
+  
 
-<button  onClick={handleAdd} >add</button>
+<button  onClick={handleClicked} >add</button>
+ 
+ {clicked ?
+<div id="Cible"style={{marginLeft:'30px'}}>
+  <input type="text"></input>
+ 
+</div> :<div id="Cible"style={{marginLeft:'30px'}}></div> 
 
-</div>
-<div id="Cible"style={{marginLeft:'30px'}}></div> 
+}  
 
-    
 </div>
 
 
