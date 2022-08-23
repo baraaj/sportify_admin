@@ -577,27 +577,28 @@ const kebili =  [
   <div class="form-group">
 
 <label for="activites">Activité(s)</label>
-
- 
+{activites.map((SingleActivite,index)=>(
+<div key={index}>
   <div className="input-group" style={
     {
       
       marginBottom:'20px'
     }
   }>
-  
-
-<button  onClick={handleClicked} >add</button>
- 
- {clicked ?
-<div id="Cible"style={{marginLeft:'30px'}}>
-  <input type="text"></input>
- 
-</div> :<div id="Cible"style={{marginLeft:'30px'}}></div> 
-
-}  
+<input required="true" type="text" style={{height:'50px'}} onChange={(e)=>{handleActiviteschange(e,index)
+}} class="input-control form-control" id="activites"/>
+{activites.length>1&&(<button onClick={()=>handleActivitesRemove(index)}className="deletebutton input-group-append">Remove</button>)}
 
 </div>
+{activites.length-1===index && activites.length<4 && 
+<div className="col-sm-2">
+  <button class="addbutton">
+    <AddIcon onClick={handleActivitesAdd}style={{fontSize:'20px'}}/>Ajouter</button>
+    </div>
+    }
+</div>
+))}
+
 
 
 
