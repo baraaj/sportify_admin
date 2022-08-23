@@ -59,16 +59,22 @@ import AddIcon from '@mui/icons-material/Add';
         setNom(e.target.value)
       }
     
-     
-     function handleAct(e){
-      setActivite([...activites,{}])
-      setActivite(activites=>[...activites,e.target.value]);
-      console.log(activites)
-      
+     const handleActivitesAdd=()=>
+     {
+       setActivite([...activites,{}])
      }
-   const handleClicked=()=>{
-    setClicked(true)
-   }
+     const handleActiviteschange=(e,index)=>
+     {
+       if(e.target.value!==undefined)
+       setActivite(activites=>[...activites,e.target.value])
+     }
+     const handleActivitesRemove=(index)=>
+     {
+      const List=[...activites];
+      List.splice(index,1);
+      setActivite(List)
+      console.log(activites)
+     }
   /*
      const additem=async()=>{
       var formdata = new FormData();
