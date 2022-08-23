@@ -75,12 +75,14 @@ import AddIcon from '@mui/icons-material/Add';
       setActivite(List)
       console.log(activites)
      }
-  /*
+  
      const additem=async()=>{
       var formdata = new FormData();
 formdata.append("nom_club",nom_club);
 formdata.append("logo", logo);
 formdata.append("emplacement",emplacement);
+for (let i = 1; i < activites.length; i++) {   
+  formdata.append("activite[]",(activites[i]));}
 //formdata.append("activite", activites);
 formdata.append("nom_entraineur",nom_entraineur);
 formdata.append("gouvernement", gouvernement);
@@ -97,7 +99,7 @@ fetch("http://localhost:3000/api/clubs", requestOptions)
   .catch(error => console.log('error', error));
      }
 
-      */
+       
    
 
       
