@@ -28,7 +28,7 @@ import AddIcon from '@mui/icons-material/Add';
          const ch=e.target.value;
         l=[ch.split(" ")];
          
-      setActivite(l);
+      //setActivite(l);
          
         
       }
@@ -59,13 +59,7 @@ import AddIcon from '@mui/icons-material/Add';
         setNom(e.target.value)
       }
     
-     {/*const handleAdd=(e)=>{
-    
-      var Contenu = document.getElementById('Cible').innerHTML;
-		Contenu = Contenu + '<br/><input onChange="handleAct()" type=\"text\"/>';
-		document.getElementById('Cible').innerHTML = Contenu;
-     // setActivite([...activites,{}])
-     }*/}
+     
      function handleAct(e){
       setActivite([...activites,{}])
       setActivite(activites=>[...activites,e.target.value]);
