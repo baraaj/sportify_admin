@@ -117,8 +117,8 @@ clb=clbs.map((c) => {
     //c.temps[0].jour.toString()+""+c.temps[0].horaire.toString() ,
     région:c.region,
     logo:c.logo,
-    activité:c.activite.map(a=>{return a+"\r"})
-    
+    activité:c.activite.map(a=>{return a.toString()+""})
+   
   };});
    
   const rows = clb;

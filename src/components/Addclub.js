@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
       const [emplacement, setEmplacement] =useState(null);
       const [region, setRegion] =useState(null);
       const [gouvernement, setGouvernement] =useState(null);
-      const [activites, setActivite] =useState([{Activite:''}]);
+      const [activites, setActivite] =useState([{activite:''}]);
       const [nom_entraineur, setNomE] =useState(null);
       const [temps, setTemps] =useState([]);
       const [logo,setLogo]=useState(null);
@@ -75,16 +75,18 @@ import AddIcon from '@mui/icons-material/Add';
       let List=[...activites];
       List.splice(index,1);
       setActivite(List)
-      console.log(activites)
+     
      }
+      
   
      const additem=async()=>{
       var formdata = new FormData();
 formdata.append("nom_club",nom_club);
 formdata.append("logo", logo);
 formdata.append("emplacement",emplacement);
-for (let i = 1; i < activites.length; i++) {   
-  formdata.append("activite[]",(activites[i]));}
+for (let i = 0; i < activites.length; i++) {   
+  formdata.append("activite[]",(activites[i].activite));}
+  //console.log(activites[1].activite.toString());
 //formdata.append("activite", activites);
 formdata.append("nom_entraineur",nom_entraineur);
 formdata.append("gouvernement", gouvernement);
@@ -559,7 +561,7 @@ const kebili =  [
     
                                 </div>
                                <div class="">
-                               <form onSubmit={(e)=>{e.preventDefault()}}style={{marginLeft:'10%',alignItems:'left'}}>
+                               <form onSubmit={(e)=>{e.preventDefault();additem()}}style={{marginLeft:'10%',alignItems:'left'}}>
   
   <div class="form-group ">
     <label for="club">Nom du club</label>
@@ -612,7 +614,7 @@ const kebili =  [
       marginBottom:'20px'
     }
   }>
-              <input type="text" style={{height:'40px'}} className="input-control form-control" id="activites" name="name" value={element.name || ""} onChange={e => handleActiviteschange(e,index)} />
+              <input type="text" style={{height:'40px'}} className="input-control form-control" id="activites" name="activite" value={element.activite || ""} onChange={e => handleActiviteschange(e,index)} />
                
               {
                 index ? 
