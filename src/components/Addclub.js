@@ -1,4 +1,4 @@
-import SideNav from "./Sidenav";
+import SideNav from "./Sidenav.css";
   import React from 'react'
 import { useState,useEffect } from "react";
 import AddIcon from '@mui/icons-material/Add';
@@ -10,7 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
       const [emplacement, setEmplacement] =useState(null);
       const [region, setRegion] =useState(null);
       const [gouvernement, setGouvernement] =useState(null);
-      const [activites, setActivite] =useState([{}]);
+      const [activites, setActivite] =useState([{Activite:''}]);
       const [nom_entraineur, setNomE] =useState(null);
       const [temps, setTemps] =useState([]);
       const [logo,setLogo]=useState(null);
@@ -61,16 +61,18 @@ import AddIcon from '@mui/icons-material/Add';
     
      const handleActivitesAdd=()=>
      {
-       setActivite([...activites,{}])
+       setActivite([...activites,{activite:""}])
      }
      const handleActiviteschange=(e,index)=>
      {
-       if(e.target.value!==undefined)
-       setActivite(activites=>[...activites,e.target.value])
+      let Newactivites=[...activites];
+      Newactivites[index][e.target.name]=e.target.value;
+       //if(e.target.value!==undefined)
+       setActivite(Newactivites);
      }
      const handleActivitesRemove=(index)=>
      {
-      const List=[...activites];
+      let List=[...activites];
       List.splice(index,1);
       setActivite(List)
       console.log(activites)
@@ -574,7 +576,7 @@ const kebili =  [
     <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_entraineur" onChange={handleChange}/>
  
   </div>
-  <div class="form-group">
+  {/*<div class="form-group">
 
 <label for="activites">Activité(s)</label>
 {activites.map((SingleActivite,index)=>(
@@ -597,13 +599,36 @@ const kebili =  [
     </div>
     }
 </div>
-))}
 
+  ))}*/}
+  <div class="form-group">
 
-
-
-
-</div> 
+<label for="activites">Activité(s)</label>
+{activites.map((element, index) => (
+            <div className="form-inline" key={index}>
+                <div className="input-group" style={
+    {
+      
+      marginBottom:'20px'
+    }
+  }>
+              <input type="text" style={{height:'40px'}} className="input-control form-control" id="activites" name="name" value={element.name || ""} onChange={e => handleActiviteschange(e,index)} />
+               
+              {
+                index ? 
+                 <span> <button type="button"   className="deletebutton input-group-append form-control" onClick={() => handleActivitesRemove(index)}>Remove</button> </span>
+                : null
+              }
+            </div>
+            </div>
+          ))}</div>
+          
+          <div className="col-sm-2">
+          <div className="button-section">
+              <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() => handleActivitesAdd()}>Add</button>
+           
+              </div>
+          </div>
   <div class="form-group ">
   <label for="club">Gouvernement</label>
   <div class="input-select">

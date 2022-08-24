@@ -620,4 +620,7 @@ form .inner-form {
     border-radius: 50%;
    padding: 5px;
   }
- 
+ .act{
+  display: flex;
+  
+ }
