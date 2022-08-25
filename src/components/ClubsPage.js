@@ -113,7 +113,8 @@ clb=clbs.map((c) => {
     nom:c.nom_club,
     gouvernement: c.gouvernement,
     emplacement:c.emplacement,
-    temps:c.temps.map(cc=>{return cc.jour.toString()+""+cc.horaire.toString()+"\r"}),
+    temps:c.temps.map(cc=>{/*return cc.jour.toString()+""+cc.horaire.toString()+"\r"*/
+  }),
     //c.temps[0].jour.toString()+""+c.temps[0].horaire.toString() ,
     région:c.region,
     logo:c.logo,

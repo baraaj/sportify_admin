@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
       const [gouvernement, setGouvernement] =useState(null);
       const [activites, setActivite] =useState([{activite:''}]);
       const [nom_entraineur, setNomE] =useState(null);
-      const [temps, setTemps] =useState([{jour:"",horaire:""}]);
+      const [temp, setTemps] =useState([{jour:"",horaire:""}]);
       const [logo,setLogo]=useState(null);
       let l=[];
       const [clicked,setClicked]=useState(false);
@@ -78,25 +78,26 @@ import AddIcon from '@mui/icons-material/Add';
      
      }
      let handleChangeTemps=(i, e)=> {
-      let Newtemps = [...temps];
+      let Newtemps = [...temp];
       Newtemps[i][e.target.name] = e.target.value;
-      setTemps(temps);
+      setTemps(Newtemps);
     }
   
     let addTemps=()=> {
       
-        setTemps([...temps, { jour: "", horaire: "" }]);
+        setTemps([...temp, { jour: "", horaire: "" }]);
      
     }
   
     let removeTemps=(i)=>{
-      let Newtemps = [...temps];
+      let Newtemps = [...temp];
       Newtemps.splice(i, 1);
       setTemps(Newtemps);
       
+      
     }
       
-  
+ 
      const additem=async()=>{
       var formdata = new FormData();
 formdata.append("nom_club",nom_club);
@@ -104,8 +105,11 @@ formdata.append("logo", logo);
 formdata.append("emplacement",emplacement);
 for (let i = 0; i < activites.length; i++) {   
   formdata.append("activite[]",(activites[i].activite));}
-  //console.log(activites[1].activite.toString());
-//formdata.append("activite", activites);
+  for (let i = 0; i <temp.length; i++) {   
+    formdata.append("temps[].jour",temp[i].jour.toString());
+    formdata.append("temps[].horaire",temp[i].horaire.toString())
+  }
+   
 formdata.append("nom_entraineur",nom_entraineur);
 formdata.append("gouvernement", gouvernement);
 formdata.append("region", region);
@@ -122,7 +126,7 @@ fetch("http://localhost:3000/api/clubs", requestOptions)
      }
 
        
-   
+ 
 
       
       /** Different arrays for different dropdowns */
@@ -627,8 +631,8 @@ const kebili =  [
           </div>
           <div class="form-group">
 
-<label for="Horaire">Horaires</label>
-{temps.map((element, index) => (
+<label for="Horaires">Horaires</label>
+{temp.map((element, index) => (
             <div className="form-inline" key={index}>
                 <div className="input-group" style={
     {
@@ -637,7 +641,7 @@ const kebili =  [
     }
   }> 
               <label >Jour(s)</label>  
-              <input type="text" style={{height:'40px'}} className="input-control form-control" name="jour" value={element.jour || ""} onChange={e => handleChangeTemps(index,e)} />
+              <input type="text" style={{height:'40px'}} className="input-control form-control" name="jour" value={element.jour || ""} onChange={e=>handleChangeTemps(index,e)} />
               <label>Horaire(s)</label> 
               <input type="text" style={{height:'40px'}} className="input-control form-control" name="horaire" value={element.horaire || ""} onChange={e => handleChangeTemps(index,e)} />
               {
