@@ -72,6 +72,24 @@ import {useEffect,useState } from "react";
     const handleChangenc =(e)=>{
       setNom(e.target.value)
     }
+    const handleActivitesAdd=()=>
+     {
+       setActivite([...activites,{activite:""}])
+     }
+     const handleActiviteschange=(e,index)=>
+     {
+      let Newactivites=[...activites];
+      Newactivites[index][e.target.name]=e.target.value;
+       //if(e.target.value!==undefined)
+       setActivite(Newactivites);
+     }
+     const handleActivitesRemove=(index)=>
+     {
+      let List=[...activites];
+      List.splice(index,1);
+      setActivite(List)
+     
+     }
     
       const updateClub=async(id)=>{
         var formdata = new FormData();
@@ -537,38 +555,38 @@ const kebili =  [
 
                 
     
-                    <div id="content-wrapper" class="d-flex flex-column">
+                    <div id="content-wrapper" className="d-flex flex-column">
      
                         <div id="content">
     
     
                        
-                            <div class="container-fluid">
+                            <div className="container-fluid">
     
     
-                                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <h1 class="h3 mb-0 title">Modification du club</h1>
+                                <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                                    <h1 className="h3 mb-0 title">Modification du club</h1>
     
                                 </div>
-                               <div class="">
+                               <div className="">
                                <form onSubmit={(e)=>{e.preventDefault();updateClub(ch.id)}}style={{marginLeft:'10%',alignItems:'left'}}>
   
-  <div class="form-group ">
+  <div className="form-group ">
     <label for="club">Nom du club</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder={ch.nom} name="nom_club" onChange={handleChangenc}/>
+    <input type="text" className="form-control" id="club" aria-describedby="Help" placeholder={ch.nom} name="nom_club" onChange={handleChangenc}/>
 
   </div>
-  <div class="form-group ">
+  <div className="form-group ">
     <label for="club">Adresse</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder={ch.emplacement} name="emplacement"onChange={handleChangea}/>
+    <input type="text" className="form-control" id="club" aria-describedby="Help" placeholder={ch.emplacement} name="emplacement"onChange={handleChangea}/>
  
   </div>
-  <div class="form-group ">
+  <div className="form-group ">
     <label for="club">Nom de l'entraîneur</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="nom entraineur"name="nom_entraineur"onChange={EntraineurHandler}/>
+    <input type="text" className="form-control" id="club" aria-describedby="Help" placeholder="nom entraineur"name="nom_entraineur"onChange={EntraineurHandler}/>
  
   </div>
-  <div class="form-group">
+  <div className="form-group">
 
   <label for="activites">Activité(s)</label>
 
@@ -587,10 +605,10 @@ const kebili =  [
     
 </div>
 
-  <div class="form-group ">
+  <div className="form-group ">
   <label for="club">Gouvernement</label>
-  <div class="input-select">
-                  <select data-trigger="" onChange={changeSelectOptionHandler} class="form-select" name="gouvernement">
+  <div className="input-select">
+                  <select data-trigger="" onChange={changeSelectOptionHandler} className="form-select" name="gouvernement">
                   <option></option>
                   <option>Ariana</option>
                 <option>Béja</option>
@@ -619,10 +637,10 @@ const kebili =  [
                   </select>
                 </div>
   </div>
-  <div class="form-group">
+  <div className="form-group">
   <label for="club">Région</label>
-  <div class="input-select">
-                  <select data-trigger="" class="form-select"name="region"onChange={changeSelectOptionHandlerregion}
+  <div className="input-select">
+                  <select data-trigger="" className="form-select"name="region"onChange={changeSelectOptionHandlerregion}
                  >
                         {
               /** This is where we have used our options variable */
@@ -632,14 +650,14 @@ const kebili =  [
                   
                 </div>
   </div>
-  <div class="form-group ">
+  <div className="form-group ">
 
     <label for="exampleFormControlFile1">Logo</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler}/>
+    <input type="file" className="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler}/>
   
   </div>
  
-  <button type="submit" class="btn d-flex justify-content-center" >Sauvegarder</button>
+  <button type="submit" className="btn d-flex justify-content-center" >Sauvegarder</button>
 </form>
                                </div>
     
@@ -651,7 +669,7 @@ const kebili =  [
                         </div>
     
                     </div>
-                    <footer class="sticky-footer bg-white">
+                    <footer className="sticky-footer bg-white">
                     
                     </footer>
     
