@@ -16,7 +16,7 @@ import {useEffect,useState } from "react";
       const [gouvernement, setGouvernement] =useState(null);
       const [activites, setActivite] =useState([{activite:''}]);
       const [nom_entraineur, setNomE] =useState(null);
-      const [temps, setTemps] =useState([]);
+      const [temps, setTemps] =useState([{jour:"",horaire:""}]);
       const [logo,setLogo]=useState(null);
        
       const handleChange=(e)=>{

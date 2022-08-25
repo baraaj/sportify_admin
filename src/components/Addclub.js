@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
       const [gouvernement, setGouvernement] =useState(null);
       const [activites, setActivite] =useState([{activite:''}]);
       const [nom_entraineur, setNomE] =useState(null);
-      const [temps, setTemps] =useState([{jour:'',horaire:''}]);
+      const [temps, setTemps] =useState([{jour:"",horaire:""}]);
       const [logo,setLogo]=useState(null);
       let l=[];
       const [clicked,setClicked]=useState(false);
@@ -93,7 +93,7 @@ import AddIcon from '@mui/icons-material/Add';
       let Newtemps = [...temps];
       Newtemps.splice(i, 1);
       setTemps(Newtemps);
-      console.log(temps);
+      
     }
       
   
@@ -627,7 +627,7 @@ const kebili =  [
           </div>
           <div class="form-group">
 
-<label for="Horire">Horaires</label>
+<label for="Horaire">Horaires</label>
 {temps.map((element, index) => (
             <div className="form-inline" key={index}>
                 <div className="input-group" style={
@@ -636,10 +636,10 @@ const kebili =  [
       marginBottom:'20px'
     }
   }> 
-              <label style={{height:'40px'}} >Jour(s)</label>  
-              <input type="text" style={{height:'40px'}} className="input-control form-control" id="jour" name="jour" value={element.jour || ""} onChange={e => handleChangeTemps(index,e)} />
+              <label >Jour(s)</label>  
+              <input type="text" style={{height:'40px'}} className="input-control form-control" name="jour" value={element.jour || ""} onChange={e => handleChangeTemps(index,e)} />
               <label>Horaire(s)</label> 
-              <input type="text" style={{height:'40px'}} className="input-control form-control" id="horaire" name="horaire" value={element.horaire || ""} onChange={e => handleChangeTemps(index,e)} />
+              <input type="text" style={{height:'40px'}} className="input-control form-control" name="horaire" value={element.horaire || ""} onChange={e => handleChangeTemps(index,e)} />
               {
                 index ? 
                  <span> <button type="button"   className="deletebutton input-group-append form-control" onClick={() => removeTemps(index)}>Remove</button> </span>
