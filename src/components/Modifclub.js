@@ -14,7 +14,7 @@ import {useEffect,useState } from "react";
       const [emplacement, setEmplacement] =useState(null);
       const [region, setRegion] =useState(null);
       const [gouvernement, setGouvernement] =useState(null);
-      const [activite, setActivite] =useState([]);
+      const [activites, setActivite] =useState([{activite:''}]);
       const [nom_entraineur, setNomE] =useState(null);
       const [temps, setTemps] =useState([]);
       const [logo,setLogo]=useState(null);
@@ -48,14 +48,7 @@ import {useEffect,useState } from "react";
         
        
       };
-      const activiteHandler=(e)=>{
-       
-        const c=e.target.value;
-       
-        setActivite(c.split(" "));
-        
       
-     };
        
     
      const Logohandler=(e)=>{
@@ -586,24 +579,34 @@ const kebili =  [
     <input type="text" className="form-control" id="club" aria-describedby="Help" placeholder="nom entraineur"name="nom_entraineur"onChange={EntraineurHandler}/>
  
   </div>
-  <div className="form-group">
+  <div class="form-group">
 
-  <label for="activites">Activité(s)</label>
-
-<div>
-  <div className="input-group" style={
+<label for="activites">Activité(s)</label>
+{activites.map((element, index) => (
+            <div className="form-inline" key={index}>
+                <div className="input-group" style={
     {
       
       marginBottom:'20px'
     }
   }>
-<input type="text" style={{height:'50px'}} onChange={activiteHandler}  class="input-control form-control" id="activites" name="activite"/>
-
-
-</div>
-</div>
-    
-</div>
+              <input type="text" style={{height:'40px'}} className="input-control form-control" id="activites" name="activite" value={element.activite || ""} onChange={e => handleActiviteschange(e,index)} />
+               
+              {
+                index ? 
+                 <span> <button type="button"   className="deletebutton input-group-append form-control" onClick={() => handleActivitesRemove(index)}>Remove</button> </span>
+                : null
+              }
+            </div>
+            </div>
+          ))}</div>
+          
+          <div className="col-sm-2">
+          <div className="button-section">
+              <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() => handleActivitesAdd()}>Add</button>
+           
+              </div>
+          </div>
 
   <div className="form-group ">
   <label for="club">Gouvernement</label>
