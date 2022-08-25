@@ -89,7 +89,8 @@ import {useEffect,useState } from "react";
         formdata.append("nom_club",nom_club);
         formdata.append("logo", logo);
         formdata.append("emplacement",emplacement);
-        formdata.append("activite",activite);
+        for (let i = 0; i < activites.length; i++) {   
+          formdata.append("activite[]",(activites[i].activite));}
         formdata.append("nom_entraineur",nom_entraineur);
         formdata.append("gouvernement", gouvernement);
         formdata.append("region", region);

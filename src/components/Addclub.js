@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
       const [gouvernement, setGouvernement] =useState(null);
       const [activites, setActivite] =useState([{activite:''}]);
       const [nom_entraineur, setNomE] =useState(null);
-      const [temps, setTemps] =useState([]);
+      const [temps, setTemps] =useState([{jour:'',horaire:''}]);
       const [logo,setLogo]=useState(null);
       let l=[];
       const [clicked,setClicked]=useState(false);
@@ -77,6 +77,23 @@ import AddIcon from '@mui/icons-material/Add';
       setActivite(List)
      
      }
+     let handleChangeTemps=(i, e)=> {
+      let Newtemps = [...temps];
+      Newtemps[i][e.target.name] = e.target.value;
+      setTemps({ temps});
+    }
+  
+    let addTemps=()=> {
+      
+        setTemps([...this.state.temps, { jour: "", horaire: "" }]);
+     
+    }
+  
+    let removeTemps=(i)=>{
+      let Newtemps = [...temps];
+      Newtemps.splice(i, 1);
+      setTemps(Newtemps);
+    }
       
   
      const additem=async()=>{
@@ -578,31 +595,7 @@ const kebili =  [
     <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_entraineur" onChange={handleChange}/>
  
   </div>
-  {/*<div class="form-group">
-
-<label for="activites">Activité(s)</label>
-{activites.map((SingleActivite,index)=>(
-<div key={index}>
-  <div className="input-group" style={
-    {
-      
-      marginBottom:'20px'
-    }
-  }>
-<input required="true" type="text" style={{height:'50px'}} onChange={(e)=>{handleActiviteschange(e,index)
-}} class="input-control form-control" id="activites"/>
-{activites.length>1&&(<button onClick={()=>handleActivitesRemove(index)}className="deletebutton input-group-append">Remove</button>)}
-
-</div>
-{activites.length-1===index && activites.length<4 && 
-<div className="col-sm-2">
-  <button class="addbutton">
-    <AddIcon onClick={handleActivitesAdd}style={{fontSize:'20px'}}/>Ajouter</button>
-    </div>
-    }
-</div>
-
-  ))}*/}
+  
   <div class="form-group">
 
 <label for="activites">Activité(s)</label>
@@ -628,6 +621,36 @@ const kebili =  [
           <div className="col-sm-2">
           <div className="button-section">
               <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() => handleActivitesAdd()}>Add</button>
+           
+              </div>
+          </div>
+          <div class="form-group">
+
+<label for="Horire">Horaires</label>
+{temps.map((element, index) => (
+            <div className="form-inline" key={index}>
+                <div className="input-group" style={
+    {
+      
+      marginBottom:'20px'
+    }
+  }> 
+              <label>Jour(s)</label>  
+              <input type="text" style={{height:'40px'}} className="input-control form-control" id="jour" name="jour" value={element.jour || ""} onChange={e => handleChangeTemps(index,e)} />
+              <label>Horaire(s)</label> 
+              <input type="text" style={{height:'40px'}} className="input-control form-control" id="horaire" name="horaire" value={element.horaire || ""} onChange={e => handleChangeTemps(index,e)} />
+              {
+                index ? 
+                 <span> <button type="button"   className="deletebutton input-group-append form-control" onClick={() => removeTemps(index)}>Remove</button> </span>
+                : null
+              }
+            </div>
+            </div>
+          ))}</div>
+          
+          <div className="col-sm-2">
+          <div className="button-section">
+              <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() =>addTemps}>Add</button>
            
               </div>
           </div>
