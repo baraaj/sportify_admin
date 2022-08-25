@@ -80,12 +80,12 @@ import AddIcon from '@mui/icons-material/Add';
      let handleChangeTemps=(i, e)=> {
       let Newtemps = [...temps];
       Newtemps[i][e.target.name] = e.target.value;
-      setTemps({ temps});
+      setTemps(temps);
     }
   
     let addTemps=()=> {
       
-        setTemps([...this.state.temps, { jour: "", horaire: "" }]);
+        setTemps([...temps, { jour: "", horaire: "" }]);
      
     }
   
@@ -93,6 +93,7 @@ import AddIcon from '@mui/icons-material/Add';
       let Newtemps = [...temps];
       Newtemps.splice(i, 1);
       setTemps(Newtemps);
+      console.log(temps);
     }
       
   
@@ -635,7 +636,7 @@ const kebili =  [
       marginBottom:'20px'
     }
   }> 
-              <label>Jour(s)</label>  
+              <label style={{height:'40px'}} >Jour(s)</label>  
               <input type="text" style={{height:'40px'}} className="input-control form-control" id="jour" name="jour" value={element.jour || ""} onChange={e => handleChangeTemps(index,e)} />
               <label>Horaire(s)</label> 
               <input type="text" style={{height:'40px'}} className="input-control form-control" id="horaire" name="horaire" value={element.horaire || ""} onChange={e => handleChangeTemps(index,e)} />
@@ -650,7 +651,7 @@ const kebili =  [
           
           <div className="col-sm-2">
           <div className="button-section">
-              <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() =>addTemps}>Add</button>
+              <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() =>addTemps()}>Add</button>
            
               </div>
           </div>
