@@ -22,25 +22,14 @@ import AddIcon from '@mui/icons-material/Add';
        
 
       }
-      //console.log(activite.split(" "))
-      const activiteHandler=(e)=>{
-         handleChange(e);
-         const ch=e.target.value;
-        l=[ch.split(" ")];
-         
-      //setActivite(l);
-         
-        
-      }
+       
       const emplacementHandler=(e)=>{
         handleChange(e);
         setEmplacement(e.target.value);
       }
 
 
-      /** Function that will set different values to state variable
-       * based on which dropdown is selected
-       */
+
        const changeSelectOptionHandler = (e) => {
         setSelected(e.target.value);
         handleChange(e);
@@ -481,7 +470,9 @@ const kebili =  [
       
       /** This will be used to create set of options that user will see */
       let options = null;
-    
+          /** Function that will set different values to state variable
+       * based on which dropdown is selected
+       */
       if (selected === "Ariana") {
         type = ariana;
       } else if (selected === "Béja") {
@@ -585,7 +576,7 @@ const kebili =  [
   
   <div class="form-group ">
     <label for="club">Nom du club</label>
-    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_club" onChange={handleChangenc}/>
+    <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le nom" name="nom_club" onChange={handleChangenc} required/>
  
   </div>
   <div class="form-group ">
@@ -610,7 +601,7 @@ const kebili =  [
       marginBottom:'20px'
     }
   }>
-              <input type="text" style={{height:'40px'}} className="input-control form-control" id="activites" name="activite" value={element.activite || ""} onChange={e => handleActiviteschange(e,index)} />
+              <input type="text" style={{height:'40px'}} className="input-control form-control" id="activites" name="activite" value={element.activite || ""} onChange={e => handleActiviteschange(e,index)} required/>
                
               {
                 index ? 
@@ -705,7 +696,7 @@ const kebili =  [
   <div class="form-group ">
 
     <label for="exampleFormControlFile1">Logo</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler}/>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler} required/>
   
   </div>
  
