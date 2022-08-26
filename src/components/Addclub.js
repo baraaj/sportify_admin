@@ -614,7 +614,7 @@ const kebili =  [
                
               {
                 index ? 
-                 <span> <button type="button"   className="deletebutton input-group-append form-control" onClick={() => handleActivitesRemove(index)}>Remove</button> </span>
+                 <span> <button type="button"   className="deletebutton input-group-append form-control" style={{border:'none',fontSize:'20px',backgroundColor:'lightgrey',height:'40px'}} onClick={() => handleActivitesRemove(index)}>Remove</button> </span>
                 : null
               }
             </div>
@@ -623,7 +623,7 @@ const kebili =  [
           
           <div className="col-sm-2">
           <div className="button-section">
-              <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() => handleActivitesAdd()}>Add</button>
+              <button className="button add" type="button" style={{fontSize:'20px',border:'none',fontSize:'20px',backgroundColor:'lightgreen',height:'40px'}} onClick={() => handleActivitesAdd()}>Add</button>
            
               </div>
           </div>
@@ -638,13 +638,13 @@ const kebili =  [
       marginBottom:'20px'
     }
   }> 
-              <label >Jour(s)</label>  
+              <label style={{marginTop:'-25px'}}>Jour(s)</label>  
               <input type="text" style={{height:'40px'}} className="input-control form-control" name="jour" value={element.jour || ""} onChange={e=>handleChangeTemps(index,e)} />
-              <label>Horaire(s)</label> 
+              <label style={{marginTop:'-25px',marginLeft:'20px'}}>Horaire(s)</label> 
               <input type="text" style={{height:'40px'}} className="input-control form-control" name="horaire" value={element.horaire || ""} onChange={e => handleChangeTemps(index,e)} />
               {
                 index ? 
-                 <span> <button type="button"   className="deletebutton input-group-append form-control" onClick={() => removeTemps(index)}>Remove</button> </span>
+                 <span> <button style={{border:'none',backgroundColor:'lightgray',height:'40px'}} type="button"   className="deletebutton input-group-append form-control" onClick={() => removeTemps(index)}>Remove</button> </span>
                 : null
               }
             </div>
@@ -653,7 +653,7 @@ const kebili =  [
           
           <div className="col-sm-2">
           <div className="button-section">
-              <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() =>addTemps()}>Add</button>
+              <button className="button add" type="button" style={{border:'none',fontSize:'20px',backgroundColor:'lightgreen',height:'40px'}} onClick={() =>addTemps()}>Add</button>
            
               </div>
           </div>
