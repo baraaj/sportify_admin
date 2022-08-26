@@ -605,7 +605,7 @@ const kebili =  [
                
               {
                 index ? 
-                 <span> <button type="button"   className="deletebutton input-group-append form-control" onClick={() => handleActivitesRemove(index)}>Remove</button> </span>
+                 <span> <button type="button"style={{border:'none',backgroundColor:'lightgray',height:'40px'}} className="deletebutton input-group-append form-control" onClick={() => handleActivitesRemove(index)}>Remove</button> </span>
                 : null
               }
             </div>
@@ -614,7 +614,7 @@ const kebili =  [
           
           <div className="col-sm-2">
           <div className="button-section">
-              <button className="button add" type="button" style={{fontSize:'20px'}} onClick={() => handleActivitesAdd()}>Add</button>
+              <button className="button add" type="button" sstyle={{border:'none',fontSize:'20px',backgroundColor:'lightgreen',height:'40px'}} onClick={() => handleActivitesAdd()}>Add</button>
            
               </div>
           </div>
