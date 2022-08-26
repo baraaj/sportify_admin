@@ -614,7 +614,7 @@ const kebili =  [
           
           <div className="col-sm-2">
           <div className="button-section">
-              <button className="button add" type="button" sstyle={{border:'none',fontSize:'20px',backgroundColor:'lightgreen',height:'40px'}} onClick={() => handleActivitesAdd()}>Add</button>
+              <button className="button add" type="button" style={{border:'none',fontSize:'20px',backgroundColor:'lightgreen',height:'40px'}} onClick={() => handleActivitesAdd()}>Add</button>
            
               </div>
           </div>
