@@ -1,4 +1,4 @@
-import SideNav from "./Sidenav";
+import SideNav from "../Sidenav";
 import React from 'react'
     
     export default function AddSalle() {

@@ -4,13 +4,12 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from './Title';
-export default function Clubssection() {
+import Title from './Assets/Title';
+export default function Sallessection() {
   return (
-    <div >
-                                
-    
-    <Title >Clubs </Title>
+    <div>
+        
+    <Title >Salles </Title>
     <Table size="small">
       <TableHead>
         <TableRow>
@@ -19,8 +18,7 @@ export default function Clubssection() {
           <TableCell style={{fontFamily:"fantasy",color:"#a3b18a"}}>Adresse</TableCell>
           <TableCell style={{fontFamily:"fantasy",color:"#a3b18a"}}>Région</TableCell>
           <TableCell style={{fontFamily:"fantasy",color:"#a3b18a"}}>Gouvernement</TableCell>
-          <TableCell style={{fontFamily:"fantasy",color:"#a3b18a"}}>Entraîneur</TableCell>
-          <TableCell style={{fontFamily:"fantasy",color:"#a3b18a"}}>Catégorie</TableCell>
+        
         </TableRow>
           
       </TableHead>
@@ -40,10 +38,6 @@ export default function Clubssection() {
       </TableBody>
     </Table>
     <a class="linkplus">Plus</a>
-    
-   
-   
-  
-  </div>
+    </div>
   )
 }
