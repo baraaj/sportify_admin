@@ -99,6 +99,7 @@ import AddIcon from '@mui/icons-material/Add';
       
  
      const additem=async()=>{
+      console.log(temp[1]);
       var formdata = new FormData();
 formdata.append("nom_club",nom_club);
 formdata.append("logo", logo);
@@ -106,9 +107,14 @@ formdata.append("emplacement",emplacement);
 for (let i = 0; i < activites.length; i++) {   
   formdata.append("activite[]",(activites[i].activite));}
   for (let i = 0; i <temp.length; i++) {   
-    formdata.append("temps[].jour",temp[i].jour.toString());
-    formdata.append("temps[].horaire",temp[i].horaire.toString())
+   formdata.append("temps[{}]",temp[i])
+ 
+   //formdata.append("temps[].horaire",temp[i].horaire);
+   /*
+    formdata.append("temps[].horaire",temp[i].horaire.toString())*/
+      
   }
+  
    
 formdata.append("nom_entraineur",nom_entraineur);
 formdata.append("gouvernement", gouvernement);
