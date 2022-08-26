@@ -17,19 +17,17 @@ import {useState } from "react";
       const [nom_entraineur, setNomE] =useState(null);
       const [logo,setLogo]=useState(null);
        
-     
-      
+    
       const changeSelectOptionHandler = (e) => {
         setSelected(e.target.value);
        
         setGouvernement(e.target.value)
-        setGouvernement(e.target.placeholder)
-      
-      
+         
       };
+       
       const changeSelectOptionHandlerregion = (e) => {
         setRegion(e.target.value)
-       
+         
       
       };
       const EntraineurHandler = (e) => {
@@ -699,7 +697,7 @@ const kebili =  [
   <div className="form-group ">
 
     <label for="exampleFormControlFile1">Logo</label>
-    <input type="file" className="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler} required/>
+    <input type="file" className="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler} />
   
   </div>
  

@@ -16,7 +16,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import axios from 'axios';
 import { getRowIdFromRowModel } from '@mui/x-data-grid/hooks/features/rows/gridRowsUtils';
 import {useState,useEffect} from 'react';
-import { useLocation, useParams } from "react-router-dom";  
+ import { useLocation, useParams } from "react-router-dom";  
 export default function ClubsPage() {
   const [selected, setSelected] =useState("");
   const [clbs, setClubs] =useState([]);
@@ -609,6 +609,7 @@ const kebili =  [
 
        clbs = clbs.filter(item => item.id !== id);  
       this.setClubs( clbs);  
+      alert("deleted")
      })
    } catch (err) {
      console.log(err);
