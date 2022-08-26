@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
-import Clubssection from './Clubssection';
+import Clubssection from '../Dashboard/Clubssection';
 import {ImUsers} from 'react-icons/im';
 
 

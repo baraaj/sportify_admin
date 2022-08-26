@@ -4,7 +4,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from './Assets/Title';
+import Title from '../Assets/Title';
 export default function Sallessection() {
   return (
     <div>

@@ -10,12 +10,12 @@ import {
 
 import ClubsPage from './components/Lists/ClubsPage';
 import Addclub from './components/AddPages/Addclub';
-import Modifclub from './components/Modifclub';
-import SideNav from './components/Sidenav';
-import UsersPage from './components/users';
+import Modifclub from './components/UpdatePages/Modifclub';
+import SideNav from './components/Sidenav/Sidenav';
+import UsersPage from './components/Users/users';
 import Dashboard from './components/Dashboard/Dashbord';
 import AddSalle from './components/AddPages/AddSalle';
-import SallePage from './components/SallesPage';
+import SallePage from './components/Lists/SallesPage';
 import Modifsalle from './components/Modifsalles';
 import Ajoutnews from './components/AddPages/Ajoutnews';
 import AjoutEvents from './components/AddPages/AjoutEvents';
