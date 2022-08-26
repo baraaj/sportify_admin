@@ -27,9 +27,6 @@ import AddIcon from '@mui/icons-material/Add';
         handleChange(e);
         setEmplacement(e.target.value);
       }
-
-
-
        const changeSelectOptionHandler = (e) => {
         setSelected(e.target.value);
         handleChange(e);

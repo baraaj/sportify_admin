@@ -7,8 +7,9 @@ import {useEffect,useState } from "react";
       
  const location = useLocation();
       const clb = location.state;
+      const ch=clb.club;
       const [selected, setSelected] =useState("");
-     const ch=clb.club;
+      const [temp, setTemps] =useState([{jour:"",horaire:""}]);
       const [cb,setClub]=useState({});
       const [nom_club, setNom] =useState(null);
       const [emplacement, setEmplacement] =useState(null);
@@ -16,7 +17,6 @@ import {useEffect,useState } from "react";
       const [gouvernement, setGouvernement] =useState(null);
       const [activites, setActivite] =useState([{activite:''}]);
       const [nom_entraineur, setNomE] =useState(null);
-      const [temps, setTemps] =useState([{jour:"",horaire:""}]);
       const [logo,setLogo]=useState(null);
        
       const handleChange=(e)=>{
@@ -83,7 +83,26 @@ import {useEffect,useState } from "react";
       setActivite(List)
      
      }
-    
+     let handleChangeTemps=(i, e)=> {
+      let Newtemps = [...temp];
+      Newtemps[i][e.target.name] = e.target.value;
+      setTemps(Newtemps);
+    }
+  
+    let addTemps=()=> {
+      
+        setTemps([...temp, { jour: "", horaire: "" }]);
+     
+    }
+  
+    let removeTemps=(i)=>{
+      let Newtemps = [...temp];
+      Newtemps.splice(i, 1);
+      setTemps(Newtemps);
+      
+      
+    }
+
       const updateClub=async(id)=>{
         var formdata = new FormData();
         formdata.append("nom_club",nom_club);
@@ -94,7 +113,7 @@ import {useEffect,useState } from "react";
         formdata.append("nom_entraineur",nom_entraineur);
         formdata.append("gouvernement", gouvernement);
         formdata.append("region", region);
-        
+        formdata.append("temps",JSON.stringify(temp));  
         var requestOptions = {
           method: 'PUT',
           body: formdata,
@@ -608,6 +627,36 @@ const kebili =  [
            
               </div>
           </div>
+          <div class="form-group">
+
+<label for="Horaires">Horaires</label>
+{temp.map((element, index) => (
+            <div className="form-inline" key={index}>
+                <div className="input-group" style={
+    {
+      
+      marginBottom:'20px'
+    }
+  }> 
+              <label style={{marginTop:'-25px'}}>Jour(s)</label>  
+              <input type="text" style={{height:'40px'}} className="input-control form-control" name="jour" value={element.jour || ""} onChange={e=>handleChangeTemps(index,e)} />
+              <label style={{marginTop:'-25px',marginLeft:'20px'}}>Horaire(s)</label> 
+              <input type="text" style={{height:'40px'}} className="input-control form-control" name="horaire" value={element.horaire || ""} onChange={e => handleChangeTemps(index,e)} />
+              {
+                index ? 
+                 <span> <button style={{border:'none',backgroundColor:'lightgray',height:'40px'}} type="button"   className="deletebutton input-group-append form-control" onClick={() => removeTemps(index)}>Remove</button> </span>
+                : null
+              }
+            </div>
+            </div>
+          ))}</div>
+          
+          <div className="col-sm-2">
+          <div className="button-section">
+              <button className="button add" type="button" style={{border:'none',fontSize:'20px',backgroundColor:'lightgreen',height:'40px'}} onClick={() =>addTemps()}>Add</button>
+           
+              </div>
+          </div>
 
   <div className="form-group ">
   <label for="club">Gouvernement</label>
@@ -657,7 +706,7 @@ const kebili =  [
   <div className="form-group ">
 
     <label for="exampleFormControlFile1">Logo</label>
-    <input type="file" className="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler}/>
+    <input type="file" className="form-control-file" id="exampleFormControlFile1" name="logo" onChange={Logohandler} required/>
   
   </div>
  
