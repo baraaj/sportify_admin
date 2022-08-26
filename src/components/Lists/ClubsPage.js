@@ -1,5 +1,5 @@
-import SideNav from '../Sidenav'
-import './Sidenav.css'
+import SideNav from '../Sidenav/Sidenav';
+import '../Sidenav/Sidenav.css';
 import {
   
   Link

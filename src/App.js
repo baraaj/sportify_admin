@@ -16,7 +16,7 @@ import UsersPage from './components/Users/users';
 import Dashboard from './components/Dashboard/Dashbord';
 import AddSalle from './components/AddPages/AddSalle';
 import SallePage from './components/Lists/SallesPage';
-import Modifsalle from './components/Modifsalles';
+import Modifsalle from './components/UpdatePages/Modifsalles';
 import Ajoutnews from './components/AddPages/Ajoutnews';
 import AjoutEvents from './components/AddPages/AjoutEvents';
 

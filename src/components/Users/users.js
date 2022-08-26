@@ -1,6 +1,6 @@
 import React from 'react'
-import SideNav from './Sidenav'
-import './Sidenav.css';
+import SideNav from '../Sidenav/Sidenav';
+import '../Sidenav/Sidenav.css';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
