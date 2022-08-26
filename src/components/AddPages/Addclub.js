@@ -105,7 +105,8 @@ var requestOptions = {
 
 fetch("http://localhost:3000/api/clubs", requestOptions)
   .then(response => response.text())
-  .then(result => console.log(result))
+  .then(result => {console.log(result)
+    alert("Club crée !")})
   .catch(error => console.log('error', error));
      }
 

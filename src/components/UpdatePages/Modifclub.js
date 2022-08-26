@@ -1,16 +1,14 @@
-import SideNav from "../Sidenav/Sidenav";
-import axios from "axios";
-   import React from 'react'
-import {useEffect,useState } from "react";
-  import { useLocation } from "react-router-dom";  
+import React from 'react'
+import {useState } from "react";
+  import { useLocation, useParams } from "react-router-dom";  
     export default function Modifclub() {
       
  const location = useLocation();
       const clb = location.state;
       const ch=clb.club;
+      const { id } = useParams();
       const [selected, setSelected] =useState("");
       const [temp, setTemps] =useState([{jour:"",horaire:""}]);
-      const [cb,setClub]=useState({});
       const [nom_club, setNom] =useState(null);
       const [emplacement, setEmplacement] =useState(null);
       const [region, setRegion] =useState(null);
@@ -19,13 +17,7 @@ import {useEffect,useState } from "react";
       const [nom_entraineur, setNomE] =useState(null);
       const [logo,setLogo]=useState(null);
        
-      const handleChange=(e)=>{
-      
-        const value=e.target.value;
-        setClub({...cb,[e.target.name]:value});
-      console.log(cb)
-
-      }
+     
       
       const changeSelectOptionHandler = (e) => {
         setSelected(e.target.value);
@@ -103,7 +95,7 @@ import {useEffect,useState } from "react";
       
     }
 
-      const updateClub=async(id)=>{
+      const updateClub=async()=>{
         var formdata = new FormData();
         formdata.append("nom_club",nom_club);
         formdata.append("logo", logo);
@@ -120,9 +112,10 @@ import {useEffect,useState } from "react";
           redirect: 'follow'
         };
         
-        fetch(`http://localhost:3000/api/clubs/${id}`, requestOptions)
+        fetch("http://localhost:3000/api/clubs/"+id, requestOptions)
           .then(response => response.text())
-          .then(result => console.log(result))
+          .then(result => {console.log(result)
+          alert("Club modifié !")})
           .catch(error => console.log('error', error));
         };
        

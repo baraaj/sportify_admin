@@ -16,10 +16,11 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import axios from 'axios';
 import { getRowIdFromRowModel } from '@mui/x-data-grid/hooks/features/rows/gridRowsUtils';
 import {useState,useEffect} from 'react';
+import { useLocation, useParams } from "react-router-dom";  
 export default function ClubsPage() {
   const [selected, setSelected] =useState("");
   const [clbs, setClubs] =useState([]);
-  
+  const { id } = useParams();
   let clb=[];
   /** Function that will set different values to state variable
    * based on which dropdown is selected
@@ -116,7 +117,6 @@ clb=clbs.map((c) => {
     temps:c.temps.map(cc=>{
       return cc.jour.toString()+""+cc.horaire.toString()+"\r"
   }),
-    //c.temps[0].jour.toString()+""+c.temps[0].horaire.toString() ,
     région:c.region,
     logo:c.logo,
     activité:c.activite.map(a=>{return a.toString()+""})
@@ -604,7 +604,7 @@ const kebili =  [
   const deleteClub=async(id)=>{ 
     
    try {
-     const res=await axios.delete(`/clubs/${id}`)
+     const res=await axios.delete("/clubs/"+id)
      .then(res=>{
 
        clbs = clbs.filter(item => item.id !== id);  
