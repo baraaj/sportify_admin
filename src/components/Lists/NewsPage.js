@@ -84,7 +84,7 @@ const rows = news.map((n) => {
   
   return {
    
-    id:n.id,
+    id:n._id,
     titre:n.Titre,
     description: n.Description,
   image:n.Image
