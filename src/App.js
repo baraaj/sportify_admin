@@ -42,6 +42,8 @@ function App() {
     <Route path="/" element={<Dashboard/>} exact />
     <Route path="/addnews" element={<Ajoutnews/>} exact />
     <Route path="/addevents" element={<AjoutEvents/>} exact />
+    <Route path="/modifevent/:id" element={<AjoutEvents/>} exact />
+    <Route path="/modifnews/:id" element={<AjoutEvents/>} exact />
     </Routes>
    
  
