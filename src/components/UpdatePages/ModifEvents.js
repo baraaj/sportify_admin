@@ -24,7 +24,7 @@ export default function ModifEvents(props) {
           redirect: 'follow'
         };
         
-        fetch("http://localhost:3000/api/event/updateevent/"+id, requestOptions)
+        fetch("http://localhost:3000/api/events/updateevent/"+id, requestOptions)
           .then(response => response.text())
           .then(result => {console.log(result)
           alert("Event modifié !")})
