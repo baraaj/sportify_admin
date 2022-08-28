@@ -1,6 +1,11 @@
 import React from 'react'
 import '../Sidenav/Sidenav.css';
 export default function Ajoutnews() {
+  const [news, setNews] =useState(null);
+  const [titre, setTitre] =useState(null);
+  const [description, setDescription] =useState(null);
+  const [image, setImage] =useState(null);
+
   return (
     <div id="wrapper">
 
