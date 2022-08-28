@@ -1,5 +1,6 @@
 import React from 'react'
 import '../Sidenav/Sidenav.css';
+import { useState } from 'react';
 export default function Ajoutnews() {
   const [news, setNews] =useState(null);
   const [titre, setTitre] =useState(null);
@@ -23,7 +24,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("http://localhost:3000/api/news/newsevent", requestOptions)
+fetch("http://localhost:3000/api/news/storenews", requestOptions)
 .then(response => response.text())
 .then(result => {console.log(result);
 alert("News added !")})
