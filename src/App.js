@@ -40,6 +40,8 @@ function App() {
     <Route path="/events" element={<EventsPage/>} exact />
     <Route path="/users" element={<UsersPage/>} exact />
     <Route path="/" element={<Dashboard/>} exact />
+    <Route path="/addnews" element={<Ajoutnews/>} exact />
+    <Route path="/addevents" element={<AjoutEvents/>} exact />
     </Routes>
    
  
