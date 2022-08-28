@@ -71,6 +71,7 @@ const columns: GridColDef[] = [
     renderCell:(params)=>{
       return(
         <>
+       
      <img className='avatar'src={"http://localhost:3000/"+params.row.logo} />
         </>
       )
@@ -600,6 +601,7 @@ const kebili =  [
     getClubs();
    
  },);
+ {console.log(clb)}
 
   const deleteClub=async(id)=>{ 
     

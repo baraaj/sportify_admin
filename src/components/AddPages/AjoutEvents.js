@@ -27,7 +27,7 @@ body: formdata,
 redirect: 'follow'
 };
 
-fetch("http://localhost:3000/api/event/storeevent", requestOptions)
+fetch("http://localhost:3000/api/events/storeevent", requestOptions)
 .then(response => response.text())
 .then(result => {console.log(result);
 alert("Event added !")})
@@ -69,7 +69,7 @@ alert("Event added !")})
   <div class="form-group ">
 
 <label for="exampleFormControlFile1">Image</label>
-<input type="file" class="form-control-file" id="exampleFormControlFile1"onChange={Imagehandler}/>
+<input type="file" class="form-control-file" id="exampleFormControlFile1" onChange={Imagehandler}/>
 
 </div>
  

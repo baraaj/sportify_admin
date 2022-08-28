@@ -19,6 +19,7 @@ import SallePage from './components/Lists/SallesPage';
 import Modifsalle from './components/UpdatePages/Modifsalles';
 import Ajoutnews from './components/AddPages/Ajoutnews';
 import AjoutEvents from './components/AddPages/AjoutEvents';
+import EventsPage from './components/Lists/EventsPage';
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
     <Route path="/modifsalles" element={<Modifsalle/>} exact />
     <Route path="/addsalles" element={<AddSalle/>} exact />
     <Route path="/news" element={<Ajoutnews/>} exact />
-    <Route path="/events" element={<AjoutEvents/>} exact />
+    <Route path="/events" element={<EventsPage/>} exact />
     <Route path="/users" element={<UsersPage/>} exact />
     <Route path="/" element={<Dashboard/>} exact />
     </Routes>
