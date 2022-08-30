@@ -8,6 +8,7 @@ export default function ModifEvents(props) {
   const [image, setImage] =useState(null);
   const [date, setDate] =useState(null);
   const [horaire, setHoraire] =useState(null);
+  const [ordre, setOrdre] =useState(null);
   const { id } = useParams();
 
   const Imagehandler=(e)=>{
@@ -18,6 +19,9 @@ export default function ModifEvents(props) {
         formdata.append("Titre",titre);
         formdata.append("Description", description);
         formdata.append("Image",image);
+        formdata.append("Date",date);  
+        formdata.append("Ordre",ordre);
+       
         
         var requestOptions = {
           method: 'PUT',
