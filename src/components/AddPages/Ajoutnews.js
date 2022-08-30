@@ -16,6 +16,7 @@ export default function Ajoutnews() {
 formdata.append("Titre",titre);
 formdata.append("Description", description);
 formdata.append("Image",image);
+formdata.append("Ordre",ordre); 
     
 
 

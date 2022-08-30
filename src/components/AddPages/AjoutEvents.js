@@ -7,6 +7,8 @@ export default function AjoutEvents() {
   const [description, setDescription] =useState(null);
   const [image, setImage] =useState(null);
   const [ordre, setOrdre] =useState(null);
+  const [date, setDate] =useState(null);
+  const [horaire, setHoraire] =useState(null);
 
 
   const Imagehandler=(e)=>{
@@ -18,6 +20,9 @@ export default function AjoutEvents() {
 formdata.append("Titre",titre);
 formdata.append("Description", description);
 formdata.append("Image",image);
+formdata.append("Date",date);  
+formdata.append("Horaire",horaire);  
+formdata.append("Ordre",ordre); 
     
 
 
