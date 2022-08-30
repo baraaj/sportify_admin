@@ -93,7 +93,8 @@ const rows = news.map((n) => {
     id:n._id,
     titre:n.Titre,
     description: n.Description,
-  image:n.Image
+  image:n.Image,
+  ordre:n.Ordre,
   };});
   
   
