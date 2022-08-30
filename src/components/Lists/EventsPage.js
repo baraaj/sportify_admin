@@ -50,6 +50,26 @@ export default function EventsPage() {
       editable: true,
     },
     {
+      field: 'ordre',
+      headerName: 'Ordre',
+      width: 150,
+      editable: true,
+    },
+    
+    {
+      field: 'date',
+      headerName: 'Date',
+      width: 150,
+      editable: true,
+    },
+    
+    {
+      field: 'horaire',
+      headerName: 'Horaire',
+      width: 150,
+      editable: true,
+    },
+    {
       field: 'image',
       headerName: 'Image',
       width: 150,
@@ -87,7 +107,10 @@ const rows = events.map((e) => {
     id:e._id,
     titre:e.Titre,
     description: e.Description,
-    image:e.Image
+    image:e.Image,
+    ordre:e.Ordre,
+    date:e.Date,
+    horaire:e.Horaire
   };});
   
   const show=()=>{
