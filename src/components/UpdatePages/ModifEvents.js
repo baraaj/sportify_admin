@@ -56,7 +56,7 @@ export default function ModifEvents(props) {
                                <div class="">
                                <form onSubmit={(e)=>{e.preventDefault();update()}}style={{marginLeft:'10%',alignItems:'left'}}>
   
-  <div class="form-group ">
+                               <div class="form-group ">
     <label for="club">Titre</label>
     <input type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer le titre"onChange={(e)=>setTitre(e.target.value)}/>
  
@@ -66,7 +66,16 @@ export default function ModifEvents(props) {
     <textarea type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer la description"onChange={(e)=>setDescription(e.target.value)}/>
  
   </div>
-  
+  <div class="form-group ">
+    <label for="club">Date</label>
+    <textarea type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer la description"onChange={(e)=>setDate(e.target.value)}/>
+ 
+  </div>
+  <div class="form-group ">
+    <label for="club">Horaire</label>
+    <textarea type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer la description"onChange={(e)=>setHoraire(e.target.value)}/>
+ 
+  </div>
  
   <div class="form-group ">
 
@@ -74,6 +83,7 @@ export default function ModifEvents(props) {
 <input type="file" class="form-control-file" id="exampleFormControlFile1"onChange={Imagehandler}/>
 
 </div>
+ 
  
  
   <button type="submit" class="btn-2 d-flex justify-content-center text-center">Sauvegarder</button>
