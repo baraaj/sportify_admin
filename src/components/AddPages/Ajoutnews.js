@@ -6,6 +6,7 @@ export default function Ajoutnews() {
   const [titre, setTitre] =useState(null);
   const [description, setDescription] =useState(null);
   const [image, setImage] =useState(null);
+  const [ordre, setOrdre] =useState(null);
   const Imagehandler=(e)=>{
    
     setImage(e.target.files[0]);}
