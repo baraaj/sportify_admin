@@ -49,6 +49,12 @@ const columns: GridColDef[] = [
     editable: true,
   },
   {
+    field: 'ordre',
+    headerName: 'Ordre',
+    width: 150,
+    editable: true,
+  },
+  {
     field: 'image',
     headerName: 'Image',
     width: 150,
