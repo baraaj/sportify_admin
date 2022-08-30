@@ -62,6 +62,12 @@ alert("News added !")})
  
   </div>
   
+  <div class="form-group ">
+    <label for="club">Ordre</label>
+    <input pattern="[0-200]*" type="number" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer la description"onChange={(e)=>setOrdre(e.target.value)}/>
+ 
+  </div>
+  
 <div class="form-group ">
 
 <label for="exampleFormControlFile1">Image</label>
