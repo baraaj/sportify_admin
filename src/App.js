@@ -21,6 +21,8 @@ import Ajoutnews from './components/AddPages/Ajoutnews';
 import AjoutEvents from './components/AddPages/AjoutEvents';
 import EventsPage from './components/Lists/EventsPage';
 import NewsPage from './components/Lists/NewsPage';
+import ModifEvents from './components/UpdatePages/ModifEvents';
+import ModifNews from './components/UpdatePages/ModifNews';
 
 function App() {
   return (
@@ -42,8 +44,8 @@ function App() {
     <Route path="/" element={<Dashboard/>} exact />
     <Route path="/addnews" element={<Ajoutnews/>} exact />
     <Route path="/addevents" element={<AjoutEvents/>} exact />
-    <Route path="/modifevent/:id" element={<AjoutEvents/>} exact />
-    <Route path="/modifnews/:id" element={<AjoutEvents/>} exact />
+    <Route path="/modifevent/:id" element={<ModifEvents/>} exact />
+    <Route path="/modifnews/:id" element={<ModifNews/>} exact />
     </Routes>
    
  
