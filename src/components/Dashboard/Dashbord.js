@@ -13,20 +13,20 @@ import {SiClubhouse} from 'react-icons/si';
 import Sallessection from './Sallessection';
 import axios from 'axios';
 export default function Dashbord() {
-  const [clubs, setClubs] = React.useState([{id: 0}]);
+  const [clubs, setClubs] = React.useState([]);
   const [num, setNum] = React.useState(null);
   const show=()=>{
     axios.get("/clubs/")
      .then(response => {
-       const clubs = response.data;
-       setClubs(clubs);
+       const clbs = response.data.clubs;
+       setClubs(clbs);
+       
        setNum(clubs.length)
      })
 }
 useEffect(() => {
   show();
-  console.log(clubs)
- 
+  
   
 
 }, []);
