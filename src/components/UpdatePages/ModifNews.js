@@ -7,6 +7,7 @@ export default function ModifNews() {
     const [description, setDescription] =useState(null);
     const [image, setImage] =useState(null);
     const [ordre, setOrdre] =useState(null);
+    
     const { id } = useParams();
   
     const Imagehandler=(e)=>{
@@ -17,6 +18,7 @@ export default function ModifNews() {
           formdata.append("Titre",titre);
           formdata.append("Description", description);
           formdata.append("Image",image);
+          formdata.append("Ordre",ordre);
           
           var requestOptions = {
             method: 'PUT',
