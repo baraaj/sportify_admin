@@ -6,7 +6,8 @@ export default function ModifEvents(props) {
   const [titre, setTitre] =useState(null);
   const [description, setDescription] =useState(null);
   const [image, setImage] =useState(null);
-
+  const [date, setDate] =useState(null);
+  const [horaire, setHoraire] =useState(null);
   const { id } = useParams();
 
   const Imagehandler=(e)=>{
