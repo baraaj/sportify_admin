@@ -20,15 +20,23 @@ import {useState,useEffect} from 'react';
 export default function ClubsPage() {
   const [selected, setSelected] =useState("");
   const [clbs, setClubs] =useState([]);
+  const [queryregion, setqueryregion] =useState(null);
+  const [querygouv, setquerygouv] =useState(null);
   const { id } = useParams();
   let clb=[];
+  
   /** Function that will set different values to state variable
    * based on which dropdown is selected
    */
   const changeSelectOptionHandler = (event) => {
     setSelected(event.target.value);
+    setquerygouv(event.target.value);
   };
-
+  const changeSelectOptionHandlerregion = (event) => {
+       
+    console.log(event.target.value)
+    setqueryregion(event.target.value)
+   };
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 60 },
   {
@@ -107,10 +115,11 @@ const columns: GridColDef[] = [
   }
 ];
 
-
-clb=clbs.map((c) => { 
-  return {
   
+  const rows =clbs.map((c) => { 
+ 
+  return {
+    
     id:c._id,
     nom:c.nom_club,
     gouvernement: c.gouvernement,
@@ -124,8 +133,7 @@ clb=clbs.map((c) => {
    
   };});
    
-  const rows = clb;
-  
+    
   /** Different arrays for different dropdowns */
   const ariana = [
    "Ariana Ville",
@@ -585,24 +593,35 @@ const kebili =  [
   if (type) {
     options = type.map((el) => <option key={el}>{el}</option>);
   }
+
+ const getClubs=async ()=>{
+  try {
+    const res=await axios.get("/clubs/"
+    
+    );
+   setClubs(res.data.clubs);
+   
+    
+  } catch (err) {
+    console.log(err);
+  }
+ };
+ const find=()=>{
+    
+  axios.get("/clubs/findgouvernement/"+querygouv+"/"+queryregion)
+  .then(response => {
+    const club = response.data;
+    
+    setClubs(club);
+   
+   
+  })};
+  
   useEffect(()=>{
-    const getClubs=async ()=>{
-     try {
-       const res=await axios.get('/clubs/'
-       
-       );
-      setClubs(res.data.clubs);
-      
-       
-     } catch (err) {
-       console.log(err);
-     }
-    };
+    
     getClubs();
    
  },);
- {console.log(clb)}
-
   const deleteClub=async(id)=>{ 
     
    try {
@@ -645,7 +664,7 @@ const kebili =  [
                        
 
                             <div className="container-lg">
-                            <form style={{marginLeft:'10%'}}>
+                            <form onSubmit={(e)=>{e.preventDefault();find()}} style={{marginLeft:'10%'}}>
         <div className="inner-form">
           <div className="basic-search">
             <div className="input-field">
@@ -695,7 +714,7 @@ const kebili =  [
               </div>
               <div className="input-field">
                 <div className="input-select">
-                  <select data-trigger=""  className="form-select"name="choices-single-defaul">
+                  <select data-trigger="" onChange={changeSelectOptionHandlerregion}  className="form-select"name="choices-single-defaul">
                     <option placeholder="" value="">Région</option>
                     {
               /** This is where we have used our options variable */
@@ -709,10 +728,10 @@ const kebili =  [
             <div className="row third">
               <div className="input-field">
                 <div className="result-count">
-                  <span>108 </span>résultats</div>
+                  <span>{clbs.length}</span>résultats</div>
                 <div className="group-btn">
                   <button className="btn-delete" id="delete">RESET</button>
-                  <button className="btn-search">Rechercher</button>
+                  <button type="submit" className="btn-search">Rechercher</button>
                 </div>
               </div>
             </div>
