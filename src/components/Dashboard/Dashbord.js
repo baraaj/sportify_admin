@@ -20,8 +20,8 @@ export default function Dashbord() {
      .then(response => {
        const clbs = response.data.clubs;
        setClubs(clbs);
-       
-       setNum(clubs.length)
+        
+       setNum(clbs.length)
      })
 }
 useEffect(() => {

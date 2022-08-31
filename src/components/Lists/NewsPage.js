@@ -63,7 +63,7 @@ const columns: GridColDef[] = [
       return(
         
        
-        <Avatar src={"http://localhost:3000/"+params.value}/>
+        <Avatar src={"http://localhost:3000/uploadsnews/"+params.value}/>
         
       )
     }
