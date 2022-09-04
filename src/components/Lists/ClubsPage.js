@@ -596,10 +596,11 @@ const kebili =  [
 
  const getClubs=async ()=>{
   try {
-    const res=await axios.get("/clubs/"
+    const res=await axios.get("/clubs"
     
     );
-   setClubs(res.data.clubs);
+    const club=res.data.clubs;
+   setClubs(club);
    
     
   } catch (err) {
@@ -607,21 +608,23 @@ const kebili =  [
   }
  };
  const find=()=>{
-    
+     
   axios.get("/clubs/findgouvernement/"+querygouv+"/"+queryregion)
   .then(response => {
-    const club = response.data;
+    const clubs = response.data;
     
-    setClubs(club);
+    setClubs(clubs);
    
+  
    
+  
   })};
   
   useEffect(()=>{
     
     getClubs();
    
- },);
+ },[]);
   const deleteClub=async(id)=>{ 
     
    try {
