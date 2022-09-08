@@ -628,7 +628,7 @@ const kebili =  [
   const deleteClub=async(id)=>{ 
     let clubs=[];
    try {
-     const res=await axios.delete("/clubs/"+id)
+     const res=await axios.delete(`/clubs/${id}`)
      .then(res=>{
 
        clubs =clbs.filter(item => item.id !== id);  
