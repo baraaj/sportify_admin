@@ -626,13 +626,14 @@ const kebili =  [
    
  },[]);
   const deleteClub=async(id)=>{ 
-    
+    let clubs=[];
    try {
      const res=await axios.delete("/clubs/"+id)
      .then(res=>{
 
-       clbs = clbs.filter(item => item.id !== id);  
-      this.setClubs( clbs);  
+       clubs =clbs.filter(item => item.id !== id);  
+       console.log(clubs);
+       setClubs(clubs);  
       alert("deleted")
      })
    } catch (err) {
