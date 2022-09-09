@@ -76,6 +76,16 @@ alert("Event added !")})
  
   </div>
   <div class="form-group ">
+    <label for="club">Date</label>
+    <textarea type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer la description"onChange={(e)=>setDate(e.target.value)}/>
+ 
+  </div>
+  <div class="form-group ">
+    <label for="club">Horaire</label>
+    <textarea type="text" class="form-control" id="club" aria-describedby="Help" placeholder="Entrer la description"onChange={(e)=>setHoraire(e.target.value)}/>
+ 
+  </div>
+  <div class="form-group ">
 
 <label for="exampleFormControlFile1">Image</label>
 <input type="file" class="form-control-file" id="exampleFormControlFile1" onChange={Imagehandler}/>
